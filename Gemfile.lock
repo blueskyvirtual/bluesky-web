@@ -41,6 +41,9 @@ GEM
       activemodel (= 5.1.4)
       activesupport (= 5.1.4)
       arel (~> 8.0)
+    activerecord-postgis-adapter (5.2.0)
+      activerecord (~> 5.1)
+      rgeo-activerecord (~> 6.0)
     activesupport (5.1.4)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (~> 0.7)
@@ -50,6 +53,8 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
     ast (2.4.0)
+    audited (4.6.0)
+      activerecord (>= 4.0, < 5.2)
     bindex (0.5.0)
     builder (3.2.3)
     byebug (10.0.0)
@@ -148,6 +153,10 @@ GEM
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    rgeo (1.0.0)
+    rgeo-activerecord (6.0.0)
+      activerecord (~> 5.0)
+      rgeo (~> 1.0)
     rspec-core (3.7.1)
       rspec-support (~> 3.7.0)
     rspec-expectations (3.7.0)
@@ -234,6 +243,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-postgis-adapter
+  audited
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
