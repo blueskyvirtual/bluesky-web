@@ -1,0 +1,38 @@
+AllCops:
+  TargetRubyVersion: 2.4
+  Exclude:
+    - 'db/**/*'
+    - '**/templates/**/*'
+    - '**/vendor/**/*'
+
+Rails:
+  Enabled: true
+
+# Exclude block length metrics for RSpec tests
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/LineLength:
+  Exclude:
+    - 'config/**/*'
+    - 'lib/tasks/*'
+    - 'spec/**/*'
+    - 'Gemfile'
+    - 'Rakefile'
+
+# Modify default Metrics/MethodLength
+Metrics/MethodLength:
+  Max: 15
+
+# Disable nested module/class definitions for Rails
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# Disable Missing top-level class documentation comment.
+Style/Documentation:
+  Enabled: false
+
+# Disable include is used at the top level.
+Style/MixinUsage:
+  Enabled: false
