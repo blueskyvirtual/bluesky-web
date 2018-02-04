@@ -1,0 +1,235 @@
+icao,iata,name,shortname,prefix,parking
+A124,A4F,Antonov An-124 Ruslan,AN-124,H,heavy
+A140,A40,Antonov An-140,AN-140,,small
+A148,,Antonov AN-148,AN-148,,small
+A158,A58,Antonov An-158,AN-158,,small
+A225,A25,Antonov An-225 Mriya,AN-225,H,heavy
+A306,ABY,Airbus A300-600,A300-600,H,heavy
+A30B,AB3,Airbus A300,A300,H,heavy
+A310,310,Airbus A310,A310,,medium
+A318,318,Airbus A318,A318,,medium
+A319,319,Airbus A319,A319,,medium
+A320,320,Airbus A320,A320,,medium
+A321,321,Airbus A321,A321,,medium
+A330,330,Airbus A330,A330,H,heavy
+A332,332,Airbus A330-200,A330-200,H,heavy
+A333,333,Airbus A330-300,A330-300,H,heavy
+A338,338,Airbus A330-800,A330-800,H,heavy
+A339,339,Airbus A330-900,A330-900,H,heavy
+A340,340,Airbus A340,A340,H,heavy
+A342,342,Airbus A340-200,A340-200,H,heavy
+A343,343,Airbus A340-300,A340-300,H,heavy
+A345,345,Airbus A340-500,A340-500,H,heavy
+A346,346,Airbus A340-600,A340-600,H,heavy
+A350,350,Airbus A350,A350,H,heavy
+A358,358,Airbus A350-800,A350-800,H,heavy
+A359,359,Airbus A350-900,A350-900,H,heavy
+A35K,351,Airbus A350-1000,A350-1000,H,heavy
+A388,388,Airbus A380-800,A380-800,H,heavy
+A3ST,ABB,Airbus A300-600ST Beluga Freighter,A300-600ST,H,heavy
+A748,HS7,Hawker Siddeley HS 748,HS-748,,small
+AC68,ACP,Gulfstream/Rockwell (Aero) Commander,AC68,,small
+AC90,ACT,Gulfstream/Rockwell (Aero) Turbo Commander,AC90,,small
+AN12,ANF,Antonov AN-12,AN-124,H,heavy
+AN24,AN4,Antonov AN-24,AN-24,,small
+AN26,A26,Antonov AN-26,AN-26,,small
+AN28,A28,Antonov AN-28,AN-28,,small
+AN30,A30,Antonov AN-30,AN-30,,small
+AN32,A32,Antonov AN-32,AN-32,,small
+AN72,AN7,Antonov AN-72,AN-72,,small
+AN72,AN7,Antonov AN-74,AN-74,,small
+AT43,AT4,Aerospatiale/Alenia ATR 42-300,ATR-42-300,,small
+AT43,AT4,Aerospatiale/Alenia ATR 42-320,ATR-42-320,,small
+AT45,AT5,Aerospatiale/Alenia ATR 42-500,ATR-42-500,,small
+AT46,ATR,Aerospatiale/Alenia ATR 42-600,ATR-42-600,,small
+AT72,AT7,Aerospatiale/Alenia ATR 72,ATR-72,,small
+AT73,ATR,Aerospatiale/Alenia ATR 72-200 series,ATR-72-200,,small
+AT75,ATR,Aerospatiale/Alenia ATR 72-500,ATR-72-500,,small
+AT76,ATR,Aerospatiale/Alenia ATR 72-600,ATR-72-600,,small
+ATP,ATP,British Aerospace ATP,BA-ATP,,small
+B190,BEH,Beechcraft 1900,B1900,,small
+B461,141,BAe 146-100,BAE-146-100,,small
+B462,142,BAe 146-200,BAE-146-200,,small
+B463,143,BAe 146-300,BAE-146-300,,small
+B703,703,Boeing 707,707,,medium
+B712,717,Boeing 717,717,,medium
+B720,B72,Boeing 720B,720B,,medium
+B721,721,Boeing 727-100,727-100,,medium
+B722,722,Boeing 727-200,727-200,,medium
+B731,731,Boeing 737-100,737-100,,medium
+B732,732,Boeing 737-200,737-200,,medium
+B733,733,Boeing 737-300,737-300,,medium
+B734,734,Boeing 737-400,737-400,,medium
+B735,735,Boeing 737-500,737-500,,medium
+B736,736,Boeing 737-600,737-600,,medium
+B737,737,Boeing 737-700,737-700,,medium
+B738,738,Boeing 737-800,737-800,,medium
+B739,739,Boeing 737-900,737-900,,medium
+B741,741,Boeing 747-100,747-100,H,heavy
+B742,742,Boeing 747-200,747-200,H,heavy
+B743,743,Boeing 747-300,747-300,H,heavy
+B744,744,Boeing 747-400,747-400,H,heavy
+B748,748,Boeing 747-8,747-8,H,heavy
+B74R,74R,Boeing 747SR,747SR,H,heavy
+B74S,74L,Boeing 747SP,747SP,H,heavy
+B752,752,Boeing 757-200,757-200,,medium
+B753,753,Boeing 757-300,757-300,,medium
+B762,762,Boeing 767-200,767-200,H,heavy
+B763,763,Boeing 767-300,767-300,H,heavy
+B764,764,Boeing 767-400,767-400,H,heavy
+B772,772,Boeing 777-200,777-200,H,heavy
+B772,772,Boeing 777-200ER,777-200ER,H,heavy
+B77L,77L,Boeing 777-200LR,777-200LR,H,heavy
+B77L,77L,Boeing 777F,777F,H,heavy
+B773,773,Boeing 777-300,777-300,H,heavy
+B77W,77W,Boeing 777-300ER,777-300ER,H,heavy
+B783,783,Boeing 787-3,787-3,H,heavy
+B788,788,Boeing 787-8,787-8,H,heavy
+B789,789,Boeing 787-9,787-9,H,heavy
+B78J,78J,Boeing 787-10,787-10,H,heavy
+BA11,B11,British Aerospace (BAC) One Eleven,BAE-11,,medium
+BCS1,CS1,Bombardier CS100,CS100,,medium
+BCS3,CS3,Bombardier CS300,CS300,,medium
+BE58,,Beechcraft Baron / 58 Baron,BE58,,small
+BELF,SHB,Shorts SC-5 Belfast,SC-5,,small
+BER2,,Beriev Be-200 Altair,BE-200,,medium
+BLCF,74B,Boeing 747 LCF Dreamlifter,747-LCF,H,heavy
+BN2P,BNI,Pilatus Britten-Norman BN-2A/B Islander,BN-2A,,small
+C130,LOH,Lockheed L-182 / 282 / 382 (L-100) Hercules,C-130,,medium
+C208,CN1,Cessna 208 Caravan,C-208,,small
+C210,CN1,Cessna 210 Centurion,C-210,,small
+C212,CS2,CASA / IPTN 212 Aviocar,C-212,,small
+C25A,CNJ,Cessna Citation CJ2,CJ2,,small
+C25B,CNJ,Cessna Citation CJ3,CJ3,,small
+C25C,CNJ,Cessna Citation CJ4,CJ4,,small
+C46,CWC,Curtiss C-46 Commando,C-46,,medium
+C500,CNJ,Cessna Citation I,Citation-1,,small
+C510,CNJ,Cessna Citation Mustang,Citation-M,,small
+C525,CNJ,Cessna CitationJet,Citation-Jet,,small
+C550,CNJ,Cessna Citation II,Citation-2,,small
+C560,CNJ,Cessna Citation V,Citation-5,,small
+C56X,CNJ,Cessna Citation Excel,Citation-XL,,small
+C650,CNJ,Cessna Citation III,Citation-3,,small
+C680,CNJ,Cessna Citation Sovereign,Citation-Soverign,,small
+C750,CNJ,Cessna Citation X,Citation-10,,small
+CL2T,,Bombardier 415,CL-415,,medium
+CL30,,Bombardier BD-100 Challenger 300,BD-100,,small
+CL44,CL4,Canadair CL-44,CL-44,,small
+CL60,CCJ,Canadair Challenger,CL-601,,small
+CN35,CS5,CASA/IPTN CN-235,CN-235,,medium
+CONC,SSC,Aerospatiale/BAC Concorde,Concorde,,medium
+CONI,L49,Lockheed L-1049 Super Constellation,L-1049,,medium
+COUC,HEC,Helio H-250 Courier / H-295 / 385 Super Courier,H-250,,small
+CRJ1,CR1,Canadair Regional Jet 100,CRJ-100,,small
+CRJ2,CR2,Canadair Regional Jet 200,CRJ-200,,small
+CRJ7,CR7,Canadair Regional Jet 700,CRJ-700,,small
+CRJ9,CR9,Canadair Regional Jet 900,CRJ-900,,small
+CRJX,CRK,Canadair Regional Jet 1000,CRJ-1000,,small
+CVLP,CV4,Convair CV-240 & -440,CV-240,,medium
+CVLT,CV5,"Convair CV-580, Convair CV-600, Convair CV-640",CV-580,,medium
+D228,D28,Fairchild Dornier Do.228,DO228,,small
+D328,D38,Fairchild Dornier Do.328,DO328,,small
+DC10,D10,Douglas DC-10,DC-10,H,heavy
+DC3,D3F,Douglas DC-3,DC-3,,medium
+DC6,D6F,Douglas DC-6,DC-6,,medium
+DC85,D8T,Douglas DC-8-50,DC-8-50,,medium
+DC86,D8L,Douglas DC-8-62,DC-8-62,,medium
+DC87,D8Q,Douglas DC-8-72,DC-8-72,,medium
+DC9,DC9,Douglas DC-9,DC-9,,small
+DC91,D91,Douglas DC-9-10,DC-9-10,,small
+DC92,D92,Douglas DC-9-20,DC-9-20,,small
+DC93,D93,Douglas DC-9-30,DC-9-30,,small
+DC94,D94,Douglas DC-9-40,DC-9-40,,small
+DC95,D95,Douglas DC-9-50,DC-9-50,,small
+DH2T,DHR,De Havilland Canada DHC-2 Turbo-Beaver,DHC-2TB,,small
+DH8A,DH1,De Havilland Canada DHC-8-100 Dash 8 / 8Q,DHC-8-100,,small
+DH8B,DH2,De Havilland Canada DHC-8-200 Dash 8 / 8Q,DHC-8-200,,small
+DH8C,DH3,De Havilland Canada DHC-8-300 Dash 8 / 8Q,DHC-8-300,,small
+DH8D,DH4,De Havilland Canada DHC-8-400 Dash 8Q,DHC-8-400,,small
+DHC2,DHP,De Havilland Canada DHC-2 Beaver,DHC-2,,small
+DHC3,DHL,De Havilland Canada DHC-3 Otter,DHC-3,,small
+DHC4,DHC,De Havilland Canada DHC-4 Caribou,DHC-4,,small
+DHC5,DHC,De Havilland Canada DHC-5 Buffalo,DHC-5,,small
+DHC6,DHT,De Havilland Canada DHC-6 Twin Otter,DHC-6,,small
+DHC7,DH7,De Havilland Canada DHC-7 Dash 7,DHC-7,,small
+DOVE,DHD,De Havilland DH.104 Dove,DH104,,small
+E110,EMB,Embraer EMB 110 Bandeirante,EMB-110,,small
+E120,EM2,Embraer EMB 120 Brasilia,EMB-120,,small
+E135,ER3,Embraer RJ135,ERJ-135,,small
+E135,ERD,Embraer RJ140,ERJ-140,,small
+E145,ER4,Embraer RJ145,ERJ-145,,small
+E170,E70,Embraer 170,ERJ-170,,small
+E175,E75,Embraer 175,ERJ-175,,small
+E190,E90,Embraer 190,ERJ-190,,small
+E190,E90,Embraer 195,ERJ-195,,small
+E35L,ER3,Embraer Legacy 600 / Legacy 650,ERJ-L600,,small
+E545,,Embraer Legacy 450,ERJ-L450,,small
+E190,E90,Embraer Lineage 1000,ERJ-L1000,,small
+E50P,EP1,Embraer Phenom 100,ERJ-P100,,small
+E55P,EP3,Embraer Phenom 300,ERJ-P300,,small
+F100,100,Fokker 100,F-100,,small
+F27,F27,Fokker F27 Friendship,F-27,,small
+F28,F21,Fokker F28 Fellowship,F-28,,small
+F2TH,D20,Dassault Falcon 2000,DF-2000,,small
+F50,F50,Fokker 50,F-50,,small
+F70,F70,Fokker 70,F-70,,small
+F900,DF9,Dassault Falcon 900,DF-900,,small
+FA7X,DF7,Dassault Falcon 7X,DF-7X,,small
+G159,GRS,Gulfstream Aerospace G-159 Gulfstream I,G-159,,small
+G21,GRG,Grumman G-21 Goose,G-21,,small
+G280,GR3,Gulfstream G280,G280,,small
+G73T,GRM,Grumman G-73 Turbo Mallard,G-73,,small
+GL5T,CCX,Bombardier BD-700 Global 5000,BD-700,,small
+GLEX,CCX,Bombardier Global Express / Raytheon Sentinel,B-CCX,,small
+GLF4,GJ4,Gulfstream IV,G-4,,small
+GLF5,GJ5,Gulfstream V,G-5,,small
+GLF6,GJ6,Gulfstream G650,G-650,,small
+HERN,DHH,De Havilland DH.114 Heron,DH-114,,small
+H25B,H25,British Aerospace 125 series / Hawker/Raytheon 700/800/800XP/850/900,BAE-125,,small
+H25C,H25,British Aerospace 125-1000 series / Hawker/Raytheon 1000,BAE-125-1000,,small
+I114,I14,Ilyushin IL114,IL114,,small
+IL18,IL8,Ilyushin IL18,IL18,,medium
+IL62,IL6,Ilyushin IL62,IL62,,medium
+IL76,IL7,Ilyushin IL76,IL76,,heavy
+IL86,ILW,Ilyushin IL86,IL86,,heavy
+IL96,I93,Ilyushin IL96,IL90,,heavy
+J328,FRJ,Fairchild Dornier 328JET,DO-328,,small
+JS31,J31,British Aerospace Jetstream 31,BAE-JS-31,,small
+JS32,J32,British Aerospace Jetstream 32,BAE-JS-32,,small
+JS41,J41,British Aerospace Jetstream 41,BAE-JS-41,,small
+JU52,JU5,Junkers Ju52/3M,JU52,,small
+L101,L10,Lockheed L-1011 Tristar,L-1011,H,heavy
+L188,LOE,Lockheed L-188 Electra,L-188,,medium
+L410,L4T,LET 410,L-410,,small
+LJ35,LRJ,Learjet 35 / 36 / C-21A,LJ35,,small
+LJ60,LRJ,Learjet 60,LJ60,,small
+LOAD,ALM,Ayres LM200 Loadmaster,LM200,,small
+MD11,M11,McDonnell Douglas MD-11,MD-11,H,heavy
+MD81,M81,McDonnell Douglas MD-81,MD-81,,medium
+MD82,M82,McDonnell Douglas MD-82,MD-82,,medium
+MD83,M83,McDonnell Douglas MD-83,MD-83,,medium
+MD87,M87,McDonnell Douglas MD-87,MD-87,,medium
+MD88,M88,McDonnell Douglas MD-88,MD-88,,medium
+MD90,M90,McDonnell Douglas MD-90,MD-90,,medium
+MU2,MU2,Mitsubishi Mu-2,MU-2,,small
+N262,ND2,Aerospatiale (Nord) 262,N-262,,small
+PA31,PA2,Piper PA-31 Navajo,PA-31,,small
+PA46,PAG,Piper PA-46,PA-46,,small
+PC12,PL2,Pilatus PC-12,PC-12,,small
+PC6T,PL6,Pilatus PC-6 Turbo Porter,PC-6,,small
+RJ1H,AR1,Avro RJ100,RJ100,,small
+R200,,"Robin HR200/R2000 series, Alpha160A",HR200,,small
+RJ70,AR7,Avro RJ70,RJ70,,small
+RJ85,AR8,Avro RJ85,RJ85,,small
+RX1H,AX1,Avro RJX100,RJX100,,small
+RX85,AX8,Avro RJX85,RJX85,,small
+S210,CRV,Aerospatiale (Sud Aviation) Se.210 Caravelle,SE-210,,medium
+SB20,S20,Saab 2000,S-2000,,small
+SC7,SHS,Shorts SC-7 Skyvan,SC-7,,small
+SF34,SF3,Saab SF340A/B,SF340,,small
+SH33,SH3,Shorts SD.330,SD330,,small
+SH36,SH6,Shorts SD.360,SD360,,small
+T134,TU3,Tupolev Tu-134,TU-134,,small
+T144,,Tupolev Tu-144,TU-144,,medium
+T154,TU5,Tupolev Tu-154,TU-154,,medium
+T204,T20,Tupolev Tu-204 / Tu-214,TU-204,,medium
