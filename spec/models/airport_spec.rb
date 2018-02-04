@@ -11,6 +11,8 @@ RSpec.describe Airport, type: :model do
 
   describe 'ActiveRecord associations' do
     it { expect(airport).to belong_to(:region) }
+    it { expect(airport).to have_many(:arrivals) }
+    it { expect(airport).to have_many(:departures) }
   end
   # describe 'ActiveRecord associations'
 
@@ -55,12 +57,11 @@ RSpec.describe Airport, type: :model do
   describe '#to_display' do
     before :each do
       @airport = airport
+    end
 
-      it 'returns the city, local_code (ident)' do
-        string = "#{@airport.city}, #{@airport.region.local_code} (#{@airport.ident})"
-        # rubocop:enable Metrics/LineLength
-        expect(@airport.to_display).eq string
-      end
+    it 'returns the city, local_code (ident)' do
+      string = "#{@airport.city}, #{@airport.region.local_code} (#{@airport.ident})"
+      expect(@airport.to_display).to eq string
     end
   end
 

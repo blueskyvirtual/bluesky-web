@@ -7,10 +7,22 @@ class Airport < ApplicationRecord
   # ActiveRecord associations
   belongs_to :region
 
-  has_many   :runways,
-             class_name: 'Airport::Runway',
-             dependent: :destroy,
-             inverse_of: :airport
+  has_many :arrivals,
+           class_name:  'Airline::Flight',
+           foreign_key: :destination_id,
+           inverse_of:  :destination,
+           dependent:   :destroy
+
+  has_many :departures,
+           class_name:  'Airline::Flight',
+           foreign_key: :origin_id,
+           inverse_of:  :origin,
+           dependent:   :destroy
+
+  has_many :runways,
+           class_name: 'Airport::Runway',
+           inverse_of: :airport,
+           dependent:  :destroy
 
   # ActiveRecord validations
   validates :ident,

@@ -8,4 +8,7 @@ RSpec.describe Airline::Fleet, type: :model do
   end
 
   let(:fleet) { build(:airline_fleet) }
+
+  # ActiveRecord associations
+  it { expect(fleet).to have_many(:flights) }
 end
