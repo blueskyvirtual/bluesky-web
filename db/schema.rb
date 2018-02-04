@@ -10,12 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180203231312) do
+ActiveRecord::Schema.define(version: 20180204172611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
   enable_extension "pgcrypto"
+
+  create_table "airlines", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "icao", limit: 3, null: false
+    t.string "iata", limit: 3
+    t.string "name", null: false
+    t.index ["icao"], name: "index_airlines_on_icao"
+  end
 
   create_table "airport_runways", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "airport_id", null: false
