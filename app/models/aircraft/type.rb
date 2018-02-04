@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Airline < ApplicationRecord
+class Aircraft::Type < ApplicationRecord
   # Audits
   audited
 
@@ -8,10 +8,10 @@ class Airline < ApplicationRecord
   validates :icao,
             presence:     true,
             allow_blank:  false,
-            length:       { minimum: 3, maximum: 3 },
+            length:       { minimum: 2, maximum: 4 },
             uniqueness:   { case_sensitive: false }
 
-  validates :iata, allow_blank: true, length: { minimum: 2, maximum: 3 }
+  validates :iata, allow_blank: true, length: { maximum: 3 }
   validates :name, presence: true, allow_blank: false
 
   def iata=(str)
