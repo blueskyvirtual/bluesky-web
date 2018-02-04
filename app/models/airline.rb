@@ -4,6 +4,14 @@ class Airline < ApplicationRecord
   # Audits
   audited
 
+  # ActiveRecord associations
+  has_many :fleets,
+           class_name: 'Airline::Fleet',
+           inverse_of: :airline,
+           dependent:  :destroy
+
+  has_many :aircraft_types, through: :fleets
+
   # ActiveRecord validations
   validates :icao,
             presence:     true,

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180204181504) do
+ActiveRecord::Schema.define(version: 20180204183546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,11 @@ ActiveRecord::Schema.define(version: 20180204181504) do
     t.string "iata"
     t.string "name", null: false
     t.index ["icao"], name: "index_aircraft_types_on_icao"
+  end
+
+  create_table "airline_fleets", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "airline_id", null: false
+    t.uuid "aircraft_type_id", null: false
   end
 
   create_table "airlines", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

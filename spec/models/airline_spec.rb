@@ -9,6 +9,11 @@ RSpec.describe Airline, type: :model do
 
   let(:airline) { build(:airline) }
 
+  describe 'ActiveRecord associations' do
+    it { expect(airline).to have_many(:fleets) }
+    it { expect(airline).to have_many(:aircraft_types).through(:fleets) }
+  end
+
   describe 'ActiveRecord validations' do
     # Basic validations
     it { expect(airline).to validate_presence_of(:icao) }
