@@ -38,6 +38,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'activerecord-postgis-adapter'
 gem 'audited'
+gem 'devise'
+gem 'devise-encryptable'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -50,6 +52,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7'
   gem 'rubocop', require: false
   gem 'selenium-webdriver'
+  gem 'shoulda-callback-matchers', '~> 1.1.1'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov', require: false
 end

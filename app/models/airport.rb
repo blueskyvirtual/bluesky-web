@@ -7,6 +7,11 @@ class Airport < ApplicationRecord
   # ActiveRecord associations
   belongs_to :region
 
+  has_many   :users,
+             foreign_key: :home_airport_id,
+             inverse_of: :home_airport,
+             dependent: :nullify
+
   has_many :arrivals,
            class_name:  'Airline::Flight',
            foreign_key: :destination_id,

@@ -7,7 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Airline::Flight::Type.create([
- {name: 'Charter'},
- {name: 'Event'},
- {name: 'Scheduled'}
+ { name: 'Charter' },
+ { name: 'Event' },
+ { name: 'Scheduled' }
+])
+
+Rank.create([
+    { name: 'First Officer',  automatic: true, flight_count: 0  },
+    { name: 'Captain',        automatic: true, flight_count: 20 },
+    { name: 'Senior Captain', automatic: true, flight_count: 100 },
+    { name: 'Command Captain' }
 ])
