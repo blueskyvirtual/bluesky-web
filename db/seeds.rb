@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Airline::Flight::Type.create([
+ {name: 'Charter'},
+ {name: 'Event'},
+ {name: 'Scheduled'}
+])

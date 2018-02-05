@@ -5,6 +5,7 @@ FactoryBot.define do
     association :fleet,       factory: :airline_fleet
     association :origin,      factory: :airport
     association :destination, factory: :airport
+    association :type,        factory: :airline_flight_type
 
     sequence(:flight) { |n| n }
 

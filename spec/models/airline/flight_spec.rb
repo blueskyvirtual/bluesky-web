@@ -14,6 +14,7 @@ RSpec.describe Airline::Flight, type: :model do
     it { expect(flight).to belong_to(:fleet) }
     it { expect(flight).to belong_to(:origin) }
     it { expect(flight).to belong_to(:destination) }
+    it { expect(flight).to belong_to(:type) }
   end
 
   describe 'ActiveRecord validations' do
