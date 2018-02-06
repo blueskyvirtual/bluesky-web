@@ -43,4 +43,16 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Google Analytics configuration
+  config.x.google_analytics.enabled = false
+
+  # Google reCAPTCHA configuration
+  config.x.google_recaptcha.enabled = false
+
+  # Google reCAPTCHA configuration for testing
+  Recaptcha.configure do |config|
+    config.site_key   = 'TEST'
+    config.secret_key = 'TEST'
+  end
 end

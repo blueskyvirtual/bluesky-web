@@ -35,11 +35,16 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Application specific Gems
-
 gem 'activerecord-postgis-adapter'
 gem 'audited'
+gem 'bootstrap', '~> 4.0.0'
+gem 'cookieconsent2-rails'
 gem 'devise'
 gem 'devise-encryptable'
+gem 'font-awesome-rails'
+gem 'jquery-rails'
+gem 'pundit'
+gem 'recaptcha', require: 'recaptcha/rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -48,6 +53,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'factory_bot_rails'
   gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
+  gem 'pundit-matchers', '~> 1.3.1'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.7'
   gem 'rubocop', require: false
@@ -55,6 +61,7 @@ group :development, :test do
   gem 'shoulda-callback-matchers', '~> 1.1.1'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov', require: false
+  gem 'webmock'
 end
 
 group :development do

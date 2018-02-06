@@ -1,0 +1,92 @@
+<% content_for(:navbar_class, 'navbar-home navbar-dark') %>
+
+<div class="jumbotron home-jumbotron jumbotron-fluid text-center">
+  <div class="container-fluid home-headline">
+    <h1 class="display-3 text-white">BlueSky Virtual</h1>
+    <p class="lead text-white">
+      A virtual airline for flight simulation enthusiasts.
+    </p>
+
+    <%= link_to '#features', class: 'btn btn-primary scroll-to' do %>
+      <%= fa_icon 'arrow-down' %> Explore More
+    <% end %>
+
+    <%= link_to new_user_registration_path, class: 'btn btn-success scroll-to' do %>
+      <%= fa_icon 'thumbs-up' %> Join Us
+    <% end %>
+
+    <p class="pt-4 text-center text-white text-underline">
+      <%= link_to 'Login', new_user_session_path, class: 'text-white' %>
+    </p>
+  </div>
+
+  <div class="home-background" style="background-image: url('<%= randomized_background_image %>');"></div>
+</div>
+
+<div class="container">
+  <div class="row pb-4" id="features">
+    <div class="col-lg-4">
+      <%= image_tag 'home/wing.jpeg', class: 'rounded-circle d-block mx-auto', alt: 'Awards', height: 140, width: 140 %>
+      <h2 class="text-center">Tons of flights.</h2>
+      <p>
+        Pick from over <%= number_with_delimiter(@flight_count) %> flights,
+        dynamically generate new bids, or schedule your own charter. There are
+        no limits to the aircraft you choose or the airports you wish to serve.
+      </p>
+      <p class="text-center">
+        <a class="btn btn-primary" href="#" role="button">
+          <%= fa_icon 'search' %>
+          Flight Schedule
+        </a>
+      </p>
+    </div>
+    <div class="col-lg-4">
+      <%= image_tag 'home/cockpit.jpeg', class: 'rounded-circle d-block mx-auto', alt: 'Awards', height: 140, width: 140 %>
+      <h2 class="text-center">Fun achievements.</h2>
+      <p>
+        Give purpose to your flights by earning awards! Fly to various locations,
+        meet certain deadlines, and have fun! Do you have what
+        it takes to earn all <%= @awards_count %>?
+      </p>
+      <p class="text-center">
+        <a class="btn btn-primary" href="#" role="button">
+          <%= fa_icon 'trophy' %>
+          View Awards
+        </a>
+      </p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+      <%= image_tag 'home/lounge.jpeg', class: 'rounded-circle d-block mx-auto', alt: 'Awards', height: 140, width: 140 %>
+      <h2 class="text-center">Great community.</h2>
+      <p>
+        Collaborate with other simulation enthusiasts. Share your flights,
+        brag about your landings, and track your statistics. Come by the lounge
+        and meet other pilots.
+      </p>
+      <p class="text-center">
+        <a class="btn btn-primary" href="#" role="button">
+          <%= fa_icon 'comments' %>
+          The Lounge
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <hr class="mt-4"/>
+
+  <!-- Contact -->
+  <div class="container bg-light pt-2 pb-2 mb-4" id="contact">
+    <h2>Contact Us</h2>
+    <%#= render partial: 'contact_form' %>
+
+    <div id="landing-contact-success">
+      <p>
+        Thank you for contacting us! We have received your message and will
+        review it shortly.
+      </p>
+    </div>
+  </div>
+  <!-- End Contact -->
+
+</div>
+<!-- /.container -->

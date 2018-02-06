@@ -1,0 +1,86 @@
+<div class="container">
+  <h2>Join</h2>
+  <p>
+    Thank you for your interest in joining one of today's premier virtual
+    airlines. Please tell us a little bit about yourself:
+  </p>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <div class="form-group form-row">
+      <div class="col">
+        <%= f.label 'First Name' %>
+        <%= f.text_field :first_name, class: 'form-control', placeholder: 'First name', autofocus: true,  required: true%>
+        <% if resource.errors[:first_name].present? %>
+          <div class="invalid-feedback">
+            First name <%= resource.errors[:first_name].join(', ') %>
+          </div>
+        <% end %>
+      </div>
+      <div class="col">
+        <%= f.label 'Last Name' %>
+        <%= f.text_field :last_name, class: 'form-control', placeholder: 'Last name', required: true %>
+        <% if resource.errors[:last_name].present? %>
+          <div class="invalid-feedback">
+            Last name <%= resource.errors[:last_name].join(', ') %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label 'Email address' %>
+      <%= f.email_field :email, autocomplete: "email", class: 'form-control', id: 'emailInput', placeholder: 'Enter email', required: true %>
+      <% if resource.errors[:email].present? %>
+        <div class="invalid-feedback">
+          Email <%= resource.errors[:email].join(', ') %>
+        </div>
+      <% end %>
+      <small id="emailHelp" class="form-text text-muted">
+        We'll never share your email with anyone else.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password  do %>
+        Password
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+      <% end %>
+      <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Create a password', required: true %>
+      <% if resource.errors[:password].present? %>
+        <div class="invalid-feedback">
+          Password <%= resource.errors[:password].join(', ') %>
+        </div>
+      <% end %>
+      <% if @minimum_password_length %>
+        <small id="passwordHelp" class="form-text text-muted">
+          <%= @minimum_password_length %> characters minimum
+        </small>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Confirm your password', required: true %>
+      <% if resource.errors[:password_confirmation].present? %>
+        <div class="invalid-feedback">
+          Password confirmation <%= resource.errors[:password_confirmation].join(', ') %>
+        </div>
+      <% end %>
+    </div>
+
+    <% if Rails.configuration.x.google_recaptcha.enabled %>
+      <div class="form-group">
+        <%= recaptcha_tags %>
+        <% if flash[:recaptcha_error].present? %>
+          <div class="invalid-feedback">
+            <%= flash[:recaptcha_error] %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%= f.submit "Sign up", id: 'recaptcha-form-submit', class: 'btn btn-primary' %>
+  <% end %>
+</div>

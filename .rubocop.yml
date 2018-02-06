@@ -12,6 +12,7 @@ Rails:
 # Exclude block length metrics for RSpec tests
 Metrics/BlockLength:
   Exclude:
+    - 'config/environments/**/*'
     - 'spec/**/*'
 
 Metrics/LineLength:

@@ -1,0 +1,21 @@
+/* Theme Colors */
+$primary: rgb(0, 83, 155);
+
+/* Overrides */
+body {
+  height: 100%;
+  padding-top: 65px;
+}
+
+/* Bootstrap to Rails form errors */
+.field_with_errors {
+  input {
+    @extend .is-invalid;
+    //border-color: #e30000;
+  }
+}
+
+.invalid-feedback {
+  @extend .invalid-feedback;
+  display: block !important;
+}

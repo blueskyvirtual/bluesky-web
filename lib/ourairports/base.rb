@@ -13,23 +13,30 @@ module OurAirports
       @logger = nil
 
       begin
-        update_progress("Downloading from: #{url}", 0, 0)
+        update_progress("Downloading from: #{url}")
         @raw = open(url.to_s, &:read)
       rescue StandardError
-        # TODO: rescue errors properly
-        nil
+        update_progress("Unable to retrieve from: #{url}")
+        @raw = nil
       end
     end
 
+    # Silence active record logging to avoid filling
     def record_logs_off
-      # Silence active record logging to avoid filling
+      return unless @logger.nil?
+
       @logger = ActiveRecord::Base.logger
+      @logger.info 'Disabling record logging for OurAirports import'
       ActiveRecord::Base.logger = nil
     end
 
+    # Re-enable record logging
     def record_logs_on
-      # Silence active record logging to avoid filling
-      ActiveRecord::Base.logger = @logger unless @logger.nil?
+      return if @logger.nil?
+
+      @logger.info 'Enabling record logging after OurAirports import'
+      ActiveRecord::Base.logger = @logger
+      @logger = nil
     end
 
     def parse
@@ -46,12 +53,18 @@ module OurAirports
       list
     end
 
-    def update_progress(msg, count, total)
+    def update_progress(msg, count = nil, total = nil)
       notify_observers(msg, count, total)
 
       # rubocop:disable Style/GuardClause
       if Rails.logger.level.zero?
-        Rails.logger.debug "#{self.class.name}: #{count} of #{total}: #{msg}"
+        status = if count.nil? || total.nil?
+                   nil
+                 else
+                   "#{count} of #{total}:"
+                 end
+
+        Rails.logger.debug "#{self.class.name}: #{status} #{msg}"
       end
       # rubocop:enable Style/GuardClause
     end

@@ -1,0 +1,45 @@
+<% content_for(:title, 'Login') %>
+<% content_for(:navbar_class, 'navbar-home navbar-dark') %>
+
+<div class="jumbotron home-jumbotron jumbotron-fluid text-center">
+  <div class="login-container">
+    <div class="login-card login-card-container">
+      <!--<img id="login-img" class="login-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />-->
+      <%= image_tag 'id_badge.png', id: 'login-img', class: 'login-img-card' %>
+
+      <p id="login-name" class="login-name-card">Member Login</p>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'login-form'}) do |f| %>
+        <span id="reauth-email" class="reauth-email"></span>
+
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'Email address', required: true%>
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password', required: true %>
+
+        <% flash.each do |category, msg| %>
+          <div class="text-danger text-center">
+            <%= msg %>
+          </div>
+        <% end %>
+
+        <% if devise_mapping.rememberable? -%>
+          <div id="remember" class="checkbox">
+            <%= f.label :remember_me do %>
+              <%= f.check_box :remember_me %> Remember me
+            <% end %>
+          </div>
+        <% end -%>
+
+        <%= f.submit "Sign in", class: 'btn btn-lg btn-primary btn-block login-btn' %>
+
+      <% end %>
+
+      <%= render partial: "devise/shared/links", locals: { html_class: 'login-links' } %>
+
+      <div class="text-center pt-2">
+        <%= link_to 'Home', root_path, class: 'login-links' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="home-background" style="background-image: url('<%= randomized_background_image %>');"></div>
+</div>

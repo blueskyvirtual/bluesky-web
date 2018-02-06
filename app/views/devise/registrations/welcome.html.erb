@@ -1,0 +1,11 @@
+<div class="container">
+  <h2>Welcome!</h2>
+  <% flash.each do |category, msg| %>
+    <p>
+      <%= msg %>
+    </p>
+  <% end %>
+  <p>
+    <%= link_to 'Home', root_path %>
+  </p>
+</div>

@@ -1,0 +1,11 @@
+// Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap-custom";
+@import "bootstrap";
+@import "cookieconsent.min";
+@import "font-awesome";
+
+// Application specific SCSS
+@import "alerts";
+@import "login";
+@import "navbar";
+@import "home";

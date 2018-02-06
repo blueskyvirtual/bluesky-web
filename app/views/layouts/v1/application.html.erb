@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>BlueSky Virtual <%= yield :title %></title>
+    <%= csrf_meta_tags %>
+
+    <%= favicon_link_tag 'blueskyv2-icon.png' %>
+    <%= favicon_link_tag 'blueskyv2-icon.png', rel: 'apple-touch-icon', type: 'image/png' %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= render partial: 'layouts/analytics' %>
+  </head>
+
+  <body>
+    <%= render partial: 'layouts/v1/navbar' %>
+    <%= render partial: 'layouts/v1/alerts' unless :devise_controller? %>
+
+    <main role="main">
+      <%= yield %>
+
+      <%= render partial: 'layouts/v1/footer' %>
+    </main>
+  </body>
+</html>

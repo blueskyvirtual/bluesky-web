@@ -32,6 +32,21 @@ Rails.application.configure do
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
+  # Google Analytics configuration
+  if ENV['GOOGLE_ANALYTICS_KEY'].present?
+    config.x.google_analytics.enabled = true
+    config.x.google_analytics.api_key = ENV['GOOGLE_ANALYTICS_KEY']
+  else
+    config.x.google_analytics.enabled = false
+  end
+
+  # Google reCAPTCHA configuration
+  if ENV['RECAPTCHA_SITE_KEY'].present? && ENV['RECAPTCHA_SECRET_KEY'].present?
+    config.x.google_recaptcha.enabled = true
+  else
+    config.x.google_analytics.enabled = false
+  end
+
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.

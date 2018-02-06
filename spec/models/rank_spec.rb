@@ -38,7 +38,15 @@ RSpec.describe Rank, type: :model do
       it { expect(rank.automatic).to eq true }
 
       it { expect(rank).to validate_numericality_of(:flight_count).is_greater_than_or_equal_to(0) }
-      it { expect(rank).to validate_uniqueness_of(:flight_count).scoped_to(:automatic) }
+      # it { expect(rank).to validate_uniqueness_of(:flight_count).scoped_to(:automatic) }
+
+      context 'should validate that :flight_count' do
+        it 'is unique' do
+          rank1 = create(:rank, :automatic)
+          rank2 = build(:rank, automatic: true, flight_count: rank1.flight_count)
+          expect(rank2).to_not be_valid
+        end
+      end
     end
   end
   # describe 'ActiveModel validations'

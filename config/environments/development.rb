@@ -55,4 +55,19 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  # Google Analytics configuration
+  if ENV['GOOGLE_ANALYTICS_KEY'].present?
+    config.x.google_analytics.enabled = true
+    config.x.google_analytics.api_key = ENV['GOOGLE_ANALYTICS_KEY']
+  else
+    config.x.google_analytics.enabled = false
+  end
+
+  # Google reCAPTCHA configuration
+  if ENV['RECAPTCHA_SITE_KEY'].present? && ENV['RECAPTCHA_SECRET_KEY'].present?
+    config.x.google_recaptcha.enabled = true
+  else
+    config.x.google_analytics.enabled = false
+  end
 end

@@ -1,6 +1,22 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :user,
+             path: '',
+             path_names: {
+               sign_in:   'login',
+               sign_out:  'logout',
+               sign_up:   'join'
+             },
+             controllers: {
+               # omniauth_callbacks: 'omniauth_callbacks',
+               # passwords:          'passwords',
+               registrations:      'registrations'
+             }
+
+  devise_scope :user do
+    get '/welcome', to: 'registrations#show'
+  end
+
+  root to: 'home#index'
 end
