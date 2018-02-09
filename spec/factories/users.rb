@@ -14,5 +14,9 @@ FactoryBot.define do
     trait :with_rank do
       association :rank
     end
+
+    trait :with_status do
+      association :user_status
+    end
   end
 end

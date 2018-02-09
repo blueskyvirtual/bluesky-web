@@ -1,0 +1,117 @@
+<%= content_for(:title, "#{@user} (#{@user.pilot_id})") %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h3><%= @user.rank %> <%= @user %> (<%= @user.pilot_id %>)</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <table class="table table-sm table-bordered text-center small border-0">
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase">
+          Pilot Status
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          <%= @user.user_status %>
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase">
+          Home Airport
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          <%= @user.home_airport %>
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase">
+          Networks
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          <% roster_user_networks(@user).each do |network| %>
+            <%= network[:name] %>: <%= network[:username] %><br/>
+          <% end %>
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase">
+          Joined on
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          <%= @user.created_at.strftime '%A  %B %e, %Y'%>
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase">
+          Logins
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          <% if @user.sign_in_count > 0 %>
+            <%= @user.sign_in_count %>, last at <%= @user.last_sign_in_at.strftime('%-m/%e/%Y %H:%M %Z') %>
+          <% else %>
+            Never
+          <% end %>
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td colspan="2" class="col-12 bg-primary text-white text-uppercase border-0">
+          Pilot Statistics
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase">
+          Total Flights
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          TBD legs, hours &middot; <%= link_to 'View Logbook', '#' %>
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase">
+          Online Flights
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          TBD legs, hours
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase">
+          ACARS Flights
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          TBD legs, hours
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase">
+          Awards
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          Awards list TBD
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td colspan="2" class="col-12 bg-primary text-white text-uppercase border-0">
+          History
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td colspan="2" class="col-12 border-1 pl-0 pr-0 pt-0 pb-0">
+          <%= render partial: 'history' %>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

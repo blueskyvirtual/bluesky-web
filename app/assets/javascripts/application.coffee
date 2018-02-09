@@ -28,6 +28,9 @@ $(document).on 'turbolinks:load', ->
       'href': '/policies/privacy'
     'position': 'bottom'
 
+  # enable Bootstrap4 tooltips
+  $('[data-toggle="tooltip"').tooltip()
+
   # remove active from all links
   unsetActive = (menu) ->
     menu.children().removeClass('active')

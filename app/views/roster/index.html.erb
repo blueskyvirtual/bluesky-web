@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <h3>BlueSky Pilot Roster</h3>
+    </div>
+    <div class="ml-auto">
+      <b>SORT BY</b>
+      <%= select_tag 'sort', roster_sort_options, class: 'form-control-sm', id: 'roster-sort' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <table class="table table-sm table-bordered text-center small">
+      <thead>
+        <tr class="bg-primary text-white text-uppercase">
+          <th scope="col">Pilot ID</th>
+          <th scope="col">Pilot Name</th>
+          <th scope="col">Rank</th>
+          <th scope="col">Home</th>
+          <th scope="col">Flights</th>
+          <th scope="col">Hours</th>
+          <th scope="col">Last Flight</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @users.empty? %>
+          <tr>
+            <td colspan="7">No pilots found</td>
+          </tr>
+        <% else %>
+          <% @users.each do |user| %>
+          <tr>
+            <td><%= user.pilot_id %></td>
+            <td><%= link_to user, user_path(user) %></td>
+            <td><%= user.rank %></td>
+            <td><%= user.home_airport.present? ? user.home_airport.ident : nil %></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row">
+    <div class="mx-auto">
+      <%= paginate @users, theme: 'twitter-bootstrap-4', pagination_class: 'pagination-sm' %>
+    </div>
+  </div>
+</div>

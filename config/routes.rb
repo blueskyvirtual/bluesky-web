@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   end
 
   root to: 'home#index'
+
+  resources :roster, only: %i[index show], as: :users
 end

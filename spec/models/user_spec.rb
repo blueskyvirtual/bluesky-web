@@ -10,6 +10,7 @@ RSpec.describe User, type: :model do
   let(:user) { build(:user) }
 
   describe 'ActiveRecord associations' do
+    it { expect(user).to have_many(:networks).through(:user_networks) }
     it { expect(user).to belong_to(:rank) }
   end
   # describe 'ActiveRecord associations'
@@ -33,7 +34,7 @@ RSpec.describe User, type: :model do
     it { expect(user).to_not allow_value('').for(:email) }
 
     # Inclusion/acceptance of values
-    it { expect(build(:user, :with_rank)).to validate_uniqueness_of(:email).case_insensitive }
+    it { expect(build(:user, :with_rank, :with_status)).to validate_uniqueness_of(:email).case_insensitive }
   end
   # describe 'ActiveModel validations'
 
@@ -50,6 +51,13 @@ RSpec.describe User, type: :model do
 
   describe '#last_name=' do
     it { expect(build(:user, last_name: 'wilco').last_name).to eq 'Wilco' }
+  end
+
+  describe '#to_display' do
+    it 'returns the rank name (pilot ID)' do
+      pilot = build(:user)
+      expect(pilot.to_display).to eq "#{pilot.rank} #{pilot.first_name} #{pilot.last_name} (#{pilot.pilot_id})"
+    end
   end
 
   describe '#to_s' do

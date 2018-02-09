@@ -1,0 +1,27 @@
+<table class="table table-sm table-bordered text-center mb-0">
+  <thead>
+    <tr class="bg-primary text-white text-uppercase">
+      <td>Date</td>
+      <td>Description</td>
+      <td>Updated By</td>
+      <td>Type</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% events = roster_user_history(@user) %>
+    <% if events.empty? %>
+      <tr>
+        <td colspan="4">No History</td>
+      </tr>
+    <% else %>
+      <% events.each do |event| %>
+      <tr>
+        <td><%= event[:date].strftime '%m/%d/%Y' %></td>
+        <td><%= event[:description].join(', ') %></td>
+        <td><%= event[:updated_by].present? ? event[:updated_by] : 'SYSTEM' %></td>
+        <td><%= event[:type] %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
