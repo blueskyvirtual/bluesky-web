@@ -55,7 +55,16 @@ RSpec.describe User, type: :model do
   end
 
   describe '#region_display' do
-    it 'displays the region name and country'
+    it 'displays the region name and country' do
+      region = create(:region)
+      usr    = build(:user, region: region)
+      expect(usr.region_display).to eq "#{region.name}, #{region.country.name}"
+    end
+
+    it 'returns "Unspecified" if not set' do
+      usr = build(:user)
+      expect(usr.region_display).to eq 'Unspecified'
+    end
   end
 
   describe '#to_display' do

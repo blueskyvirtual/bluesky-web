@@ -22,7 +22,7 @@
           Home Airport
         </td>
         <td class="d-inline-block col-10 text-left">
-          <%= @user.home_airport %>
+          <%= @user.home_airport.present? ? @user.home_airport : 'Unspecified' %>
         </td>
       </tr>
 
@@ -31,8 +31,13 @@
           Networks
         </td>
         <td class="d-inline-block col-10 text-left">
-          <% roster_user_networks(@user).each do |network| %>
-            <%= network[:name] %>: <%= network[:username] %><br/>
+          <% networks = roster_user_networks(@user) %>
+          <% if networks.empty? %>
+            <i>None</i>
+          <% else %>
+            <% networks.each do |network| %>
+              <%= network[:name] %>: <%= network[:username] %><br/>
+            <% end %>
           <% end %>
         </td>
       </tr>
@@ -63,7 +68,7 @@
           <% if @user.sign_in_count > 0 %>
             <%= @user.sign_in_count %>, last at <%= @user.last_sign_in_at.strftime('%-m/%e/%Y %H:%M %Z') %>
           <% else %>
-            Never
+            <i>Never</i>
           <% end %>
         </td>
       </tr>
