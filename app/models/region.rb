@@ -4,9 +4,13 @@ class Region < ApplicationRecord
   # Audits
   audited
 
+  # ActiveRecord callbacks
+  before_destroy :ensure_no_users
+
   # ActiveRecord associations
   belongs_to :country
   has_many   :airports, dependent: :destroy
+  has_many   :users,    dependent: :destroy
 
   # ActiveRecord validations
   validates :code,
@@ -23,5 +27,13 @@ class Region < ApplicationRecord
 
   def to_s
     "#{name} (#{local_code})"
+  end
+
+  private
+
+  def ensure_no_users
+    return if users.empty?
+    errors.add :users, 'are still dependent'
+    throw :abort
   end
 end

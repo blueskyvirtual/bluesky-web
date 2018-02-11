@@ -10,8 +10,9 @@ RSpec.describe User, type: :model do
   let(:user) { build(:user) }
 
   describe 'ActiveRecord associations' do
-    it { expect(user).to have_many(:networks).through(:user_networks) }
     it { expect(user).to belong_to(:rank) }
+    it { expect(user).to belong_to(:region) }
+    it { expect(user).to have_many(:networks).through(:user_networks) }
   end
   # describe 'ActiveRecord associations'
 
@@ -51,6 +52,10 @@ RSpec.describe User, type: :model do
 
   describe '#last_name=' do
     it { expect(build(:user, last_name: 'wilco').last_name).to eq 'Wilco' }
+  end
+
+  describe '#region_display' do
+    it 'displays the region name and country'
   end
 
   describe '#to_display' do

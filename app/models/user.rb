@@ -22,7 +22,8 @@ class User < ApplicationRecord
              inverse_of: :users,
              optional:   true
 
-  belongs_to :rank, class_name: 'User::Rank', inverse_of: :users
+  belongs_to :rank,   class_name: 'User::Rank', inverse_of: :users
+  belongs_to :region, optional: true
 
   belongs_to :user_status, class_name: 'User::Status', inverse_of: :users
 
@@ -53,6 +54,10 @@ class User < ApplicationRecord
 
   def last_name=(str)
     str.nil? ? super(str) : super(str.titleize)
+  end
+
+  def region_display
+    region.nil? ? 'Unspecified' : "#{region.name}, #{region.country.name}"
   end
 
   def to_display
