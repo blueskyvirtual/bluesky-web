@@ -41,7 +41,7 @@ RSpec.describe User, type: :model do
   describe '#assign_rank' do
     it 'should assign the automatic rank with flight_count == 0' do
       pilot = create(:user)
-      expect(pilot.rank).to eq Rank.find_by(automatic: true, flight_count: 0)
+      expect(pilot.rank).to eq User::Rank.find_by(automatic: true, flight_count: 0)
     end
   end
 

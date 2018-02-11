@@ -31,8 +31,8 @@ module RosterHelper
         # Rank
         if k.include? 'rank_id'
           if v.is_a? Array
-            old_rank = Rank.find(v.first)
-            new_rank = Rank.find(v.last)
+            old_rank = User::Rank.find(v.first)
+            new_rank = User::Rank.find(v.last)
             change = if new_rank.order > old_rank.order
                        "Promoted to #{new_rank}"
                      else
@@ -41,7 +41,7 @@ module RosterHelper
 
             event[:description].push change
           else
-            event[:description].push "Assigned rank #{Rank.find(v).name}"
+            event[:description].push "Assigned rank #{User::Rank.find(v).name}"
           end
         end
       end

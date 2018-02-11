@@ -49,7 +49,7 @@ RSpec.describe RosterHelper, type: :helper do
 
     it 'returns an entry when a promotion has occurred' do
       user      = create(:user)
-      user.rank = Rank.find_by(name: 'Captain')
+      user.rank = User::Rank.find_by(name: 'Captain')
       user.save
 
       audit     = user.audits.descending.first
@@ -64,8 +64,8 @@ RSpec.describe RosterHelper, type: :helper do
 
     it 'returns assigned rank entry if demoted' do
       user = create(:user)
-      user.update! rank: Rank.find_by(name: 'Captain')
-      user.update! rank: Rank.find_by(name: 'First Officer')
+      user.update! rank: User::Rank.find_by(name: 'Captain')
+      user.update! rank: User::Rank.find_by(name: 'First Officer')
 
       audit     = user.audits.descending.first
       expected  = {

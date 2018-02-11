@@ -17,12 +17,12 @@ class User < ApplicationRecord
   auto_increment :pilot_id, initial: 'BLU001'
 
   # ActiveRecord associations
-  belongs_to :rank
-
   belongs_to :home_airport,
              class_name: 'Airport',
              inverse_of: :users,
              optional:   true
+
+  belongs_to :rank, class_name: 'User::Rank', inverse_of: :users
 
   belongs_to :user_status, class_name: 'User::Status', inverse_of: :users
 

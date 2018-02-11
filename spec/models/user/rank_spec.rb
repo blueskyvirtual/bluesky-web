@@ -2,12 +2,12 @@
 
 require 'rails_helper'
 
-RSpec.describe Rank, type: :model do
+RSpec.describe User::Rank, type: :model do
   it 'has a valid factory' do
-    expect(build(:rank)).to be_valid
+    expect(build(:user_rank)).to be_valid
   end
 
-  let(:rank) { build(:rank) }
+  let(:rank) { build(:user_rank) }
 
   describe 'ActiveRecord associations' do
     it { expect(rank).to have_many(:users) }
@@ -35,7 +35,7 @@ RSpec.describe Rank, type: :model do
 
     # Automatic assigned ranks
     context 'for automatically assigned ranks' do
-      let(:rank) { build(:rank, :automatic) }
+      let(:rank) { build(:user_rank, :automatic) }
 
       it { expect(rank.automatic).to eq true }
 
@@ -44,8 +44,8 @@ RSpec.describe Rank, type: :model do
 
       context 'should validate that :flight_count' do
         it 'is unique' do
-          rank1 = create(:rank, :automatic)
-          rank2 = build(:rank, automatic: true, flight_count: rank1.flight_count)
+          rank1 = create(:user_rank, :automatic)
+          rank2 = build(:user_rank, automatic: true, flight_count: rank1.flight_count)
           expect(rank2).to_not be_valid
         end
       end
@@ -55,12 +55,12 @@ RSpec.describe Rank, type: :model do
 
   describe '#ensure_no_pilots' do
     before :each do
-      @rank = create(:rank)
+      @rank = create(:user_rank)
       @user = create(:user, rank: @rank)
     end
 
     it 'does not allow the rank to be destroyed if users are still assigned' do
-      expect { @rank.destroy }.to_not change(Rank, :count)
+      expect { @rank.destroy }.to_not change(User::Rank, :count)
     end
 
     it 'does not change the User count if users are still assigned' do
@@ -69,7 +69,7 @@ RSpec.describe Rank, type: :model do
 
     it 'allows the rank to be destroyed if no users are assigned' do
       @user.destroy
-      expect { @rank.destroy }.to change(Rank, :count).by(-1)
+      expect { @rank.destroy }.to change(User::Rank, :count).by(-1)
     end
   end
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Rank < ApplicationRecord
+class User::Rank < ApplicationRecord
   # Audits
   audited
 
@@ -8,7 +8,10 @@ class Rank < ApplicationRecord
   before_destroy :ensure_no_users
 
   # ActiveRecord associations
-  has_many :users, dependent: :destroy
+  has_many :users,
+           class_name: 'User',
+           inverse_of: :rank,
+           dependent:  :destroy
 
   # ActiveRecord validations
   validates :name,

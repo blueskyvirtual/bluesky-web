@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :rank do
+  factory :user_rank, class: 'User::Rank' do
     name { Faker::Name.name }
     # offset rank order during testing to avoid conflicts
     # with seed ranks

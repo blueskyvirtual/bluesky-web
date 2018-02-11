@@ -12,7 +12,7 @@ FactoryBot.define do
     password_confirmation { pass }
 
     trait :with_rank do
-      association :rank
+      association :rank, factory: :user_rank
     end
 
     trait :with_status do

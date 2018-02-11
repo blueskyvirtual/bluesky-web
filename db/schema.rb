@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180210185647) do
+ActiveRecord::Schema.define(version: 20180211172204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,13 +124,6 @@ ActiveRecord::Schema.define(version: 20180210185647) do
     t.text "stats_url"
   end
 
-  create_table "ranks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "flight_count"
-    t.integer "order", null: false
-    t.boolean "automatic", default: false
-  end
-
   create_table "regions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "code", null: false
     t.string "local_code", null: false
@@ -144,6 +137,13 @@ ActiveRecord::Schema.define(version: 20180210185647) do
     t.uuid "user_id", null: false
     t.uuid "network_id", null: false
     t.string "username", null: false
+  end
+
+  create_table "user_ranks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "flight_count"
+    t.integer "order", null: false
+    t.boolean "automatic", default: false
   end
 
   create_table "user_statuses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
