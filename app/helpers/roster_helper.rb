@@ -6,8 +6,8 @@ module RosterHelper
   #
   def roster_sort_options
     options_for_select(
-        sortable_columns.collect { |c| [c[1], c[0]] },
-        selected: sort_column
+      sortable_columns.collect { |c| [c[1], c[0]] },
+      selected: sort_column
     )
   end
 
@@ -31,11 +31,11 @@ module RosterHelper
           if v.is_a? Array
             old_rank = Rank.find(v.first)
             new_rank = Rank.find(v.last)
-            if new_rank.order > old_rank.order
-              change = "Promoted to #{new_rank}"
-            else
-              change = "Assigned rank #{new_rank}"
-            end
+            change = if new_rank.order > old_rank.order
+                       "Promoted to #{new_rank}"
+                     else
+                       "Assigned rank #{new_rank}"
+                     end
 
             event[:description].push change
           else

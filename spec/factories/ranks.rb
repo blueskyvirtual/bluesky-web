@@ -5,7 +5,7 @@ FactoryBot.define do
     name { Faker::Name.name }
     # offset rank order during testing to avoid conflicts
     # with seed ranks
-    sequence(:order){|x| x + 10}
+    sequence(:order) { |x| x + 10 }
 
     trait :automatic do
       sequence(:flight_count) { |i| i }
