@@ -14,6 +14,8 @@ module RosterHelper
   # Returns an array of hashes containing history events to be displayed
   # on the roster show page.
   #
+  # TODO refactor roster_user_history method for displaying user history
+  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def roster_user_history(user)
     events = []
 
@@ -51,11 +53,13 @@ module RosterHelper
 
     events
   end
+  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
   # Returns an array of hashes containing network membership information for
   # a user:
   #   { network: 'VATSIM', username: link_to obj or username if no stats url }
   #
+  # rubocop:disable Metrics/AbcSize
   def roster_user_networks(user)
     networks = []
 
@@ -77,6 +81,7 @@ module RosterHelper
 
     networks
   end
+  # rubocop:enable Metrics/AbcSize
 
   # Method included for RSpec tests to pass
   #
