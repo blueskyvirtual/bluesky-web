@@ -25,6 +25,11 @@ class Rank < ApplicationRecord
             presence: false,
             unless: :automatic?
 
+  validates :order,
+            presence: true,
+            numericality: { greater_than_or_equal_to: 0 },
+            uniqueness: { case_sensitive: false }
+
   def to_s
     name
   end

@@ -8,7 +8,7 @@ class UserPolicy < ApplicationPolicy
       # else
       # scope.where("confirmed_at IS NOT NULL")
       scope.joins(:user_status) \
-           .where('user_statuses.allow_login': true) \
+           .where('user_statuses.show_on_roster': true) \
            .where('confirmed_at IS NOT NULL')
       # end
     end

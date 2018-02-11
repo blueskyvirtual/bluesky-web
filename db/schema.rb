@@ -121,12 +121,13 @@ ActiveRecord::Schema.define(version: 20180210185647) do
   create_table "networks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.text "url"
-    t.text "status_url"
+    t.text "stats_url"
   end
 
   create_table "ranks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.integer "flight_count"
+    t.integer "order", null: false
     t.boolean "automatic", default: false
   end
 
@@ -148,6 +149,7 @@ ActiveRecord::Schema.define(version: 20180210185647) do
   create_table "user_statuses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.boolean "allow_login", default: true
+    t.boolean "show_on_roster", default: true
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

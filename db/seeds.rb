@@ -13,20 +13,21 @@ Airline::Flight::Type.create([
 ])
 
 Network.create([
-  { name: 'IVAO', url: 'https://www.ivao.aero/', status_url: '' },
-  { name: 'PilotEdge', url: 'https://www.pilotedge.net/', status_url: 'http://peaware.pilotedge.net/pilot.cfm?cid=' },
-  { name: 'VATSIM', url: 'https://www.vatsim.net/', status_url: 'https://stats.vatsim.net/search_id.php?id=' }
+  { name: 'IVAO', url: 'https://www.ivao.aero/', stats_url: '' },
+  { name: 'PilotEdge', url: 'https://www.pilotedge.net/', stats_url: 'http://peaware.pilotedge.net/pilot.cfm?cid=' },
+  { name: 'VATSIM', url: 'https://www.vatsim.net/', stats_url: 'https://stats.vatsim.net/search_id.php?id=' }
 ])
 
 Rank.create([
-  { name: 'First Officer',  automatic: true, flight_count: 0  },
-  { name: 'Captain',        automatic: true, flight_count: 20 },
-  { name: 'Senior Captain', automatic: true, flight_count: 100 },
-  { name: 'Command Captain' }
+  { name: 'First Officer',  automatic: true, flight_count: 0,   order: 1 },
+  { name: 'Captain',        automatic: true, flight_count: 20,  order: 2 },
+  { name: 'Senior Captain', automatic: true, flight_count: 100, order: 3 },
+  { name: 'Command Captain',  order: 4 },
+  { name: 'Chief Pilot',      order: 5 }
 ])
 
 User::Status.create([
-  { name: 'Active',   allow_login: true },
-  { name: 'Inactive', allow_login: false },
-  { name: 'Retired',  allow_login: false },
+  { name: 'Active',   allow_login: true,  show_on_roster: true  },
+  { name: 'Inactive', allow_login: false, show_on_roster: false },
+  { name: 'Retired',  allow_login: false, show_on_roster: true  }
 ])

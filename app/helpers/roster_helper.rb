@@ -1,6 +1,16 @@
 # frozen_string_literal: true
 
 module RosterHelper
+  # Returns options for select based on the allowed sortable_columns
+  # and the currently select sort_column
+  #
+  def roster_sort_options
+    options_for_select(
+        sortable_columns.collect { |c| [c[1], c[0]] },
+        selected: sort_column
+    )
+  end
+
   # Returns an array of hashes containing history events to be displayed
   # on the roster show page.
   #
@@ -19,8 +29,15 @@ module RosterHelper
         # Rank
         if k.include? 'rank_id'
           if v.is_a? Array
-            change = Rank.find(v.last)
-            event[:description].push "Promoted to #{change}"
+            old_rank = Rank.find(v.first)
+            new_rank = Rank.find(v.last)
+            if new_rank.order > old_rank.order
+              change = "Promoted to #{new_rank}"
+            else
+              change = "Assigned rank #{new_rank}"
+            end
+
+            event[:description].push change
           else
             event[:description].push "Assigned rank #{Rank.find(v).name}"
           end
@@ -44,7 +61,7 @@ module RosterHelper
 
     user.user_networks.joins(:network) \
         .order('networks.name') \
-        .pluck(:name, :username, :status_url) \
+        .pluck(:name, :username, :stats_url) \
         .each do |network|
 
       url = if network[2].present?
@@ -59,16 +76,6 @@ module RosterHelper
     end
 
     networks
-  end
-
-  # Returns options for select based on the allowed sortable_columns
-  # and the currently select sort_column
-  #
-  def roster_sort_options
-    options_for_select(
-      sortable_columns.collect { |c| [c[1], c[0]] },
-      selected: sort_column
-    )
   end
 
   # Method included for RSpec tests to pass

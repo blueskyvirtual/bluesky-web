@@ -22,6 +22,7 @@ RSpec.describe Rank, type: :model do
   describe 'ActiveModel validations' do
     # Basic validations
     it { expect(rank).to validate_presence_of(:name) }
+    it { expect(rank).to validate_presence_of(:order) }
     it { expect(rank).to_not validate_presence_of(:flight_count) }
 
     # Format validations
@@ -29,6 +30,7 @@ RSpec.describe Rank, type: :model do
 
     # Inclusion/acceptance of values
     it { expect(rank).to validate_uniqueness_of(:name).case_insensitive }
+    it { expect(rank).to validate_uniqueness_of(:order).case_insensitive }
     it { expect(rank.automatic).to eq false }
 
     # Automatic assigned ranks
