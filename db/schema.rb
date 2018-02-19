@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180211175202) do
+ActiveRecord::Schema.define(version: 20180219213611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -185,4 +185,17 @@ ActiveRecord::Schema.define(version: 20180211175202) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "airline_fleets", "aircraft_types"
+  add_foreign_key "airline_fleets", "airlines"
+  add_foreign_key "airline_flights", "airline_fleets", column: "fleet_id"
+  add_foreign_key "airline_flights", "airline_flight_types", column: "type_id"
+  add_foreign_key "airline_flights", "airports", column: "destination_id"
+  add_foreign_key "airline_flights", "airports", column: "origin_id"
+  add_foreign_key "airport_runways", "airports"
+  add_foreign_key "regions", "countries"
+  add_foreign_key "user_networks", "networks"
+  add_foreign_key "users", "airports", column: "home_airport_id"
+  add_foreign_key "users", "regions"
+  add_foreign_key "users", "user_ranks", column: "rank_id"
+  add_foreign_key "users", "user_statuses"
 end
