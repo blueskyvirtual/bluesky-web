@@ -18,7 +18,7 @@ Network.create([
   { name: 'VATSIM', url: 'https://www.vatsim.net/', stats_url: 'https://stats.vatsim.net/search_id.php?id=' }
 ])
 
-Rank.create([
+User::Rank.create([
   { name: 'First Officer',  automatic: true, flight_count: 0,   order: 1 },
   { name: 'Captain',        automatic: true, flight_count: 20,  order: 2 },
   { name: 'Senior Captain', automatic: true, flight_count: 100, order: 3 },
