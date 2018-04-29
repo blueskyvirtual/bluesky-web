@@ -56,7 +56,7 @@ RSpec.describe User::Rank, type: :model do
   describe '#ensure_no_pilots' do
     before :each do
       @rank = create(:user_rank)
-      @user = create(:user, rank: @rank)
+      @user = create(:user, :confirmed, rank: @rank)
     end
 
     it 'does not allow the rank to be destroyed if users are still assigned' do

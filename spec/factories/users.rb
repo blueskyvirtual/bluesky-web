@@ -11,6 +11,10 @@ FactoryBot.define do
     password { pass }
     password_confirmation { pass }
 
+    trait :confirmed do
+      after(:create){ |user| user.confirm }
+    end
+
     trait :with_rank do
       association :rank, factory: :user_rank
     end
