@@ -12,6 +12,11 @@ class Network < ApplicationRecord
 
   has_many :users, through: :user_networks
 
+  has_many :user_flights,
+           class_name: 'User::Flight',
+           inverse_of: :network,
+           dependent:  :destroy
+
   # ActiveRecord validations
   validates :name,
             presence: true,

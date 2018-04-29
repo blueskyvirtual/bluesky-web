@@ -13,6 +13,11 @@ class Aircraft::Type < ApplicationRecord
 
   has_many :airlines, through: :fleets
 
+  has_many :user_flights,
+           class_name: 'User::Flight',
+           inverse_of: :aircraft_type,
+           dependent:  :destroy
+
   # ActiveRecord validations
   validates :icao,
             presence:     true,

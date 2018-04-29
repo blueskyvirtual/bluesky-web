@@ -9,9 +9,9 @@ RSpec.describe Network, type: :model do
 
   let(:network) { build(:network) }
 
-  # describe 'ActiveRecord associations' do
-  #   it{ expect(network).to have_many(:users) }
-  # end
+  describe 'ActiveRecord associations' do
+    it{ expect(network).to have_many(:user_flights) }
+  end
 
   describe 'ActiveRecord validations' do
     # Basic validations

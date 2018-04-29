@@ -12,6 +12,7 @@ RSpec.describe Aircraft::Type, type: :model do
   describe 'ActiveRecord associations' do
     it { expect(type).to have_many(:airlines).through(:fleets) }
     it { expect(type).to have_many(:fleets) }
+    it { expect(type).to have_many(:user_flights) }
   end
 
   describe 'ActiveRecord validations' do

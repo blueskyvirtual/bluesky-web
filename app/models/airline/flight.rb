@@ -13,6 +13,11 @@ class Airline::Flight < ApplicationRecord
              class_name: 'Airline::Flight::Type',
              inverse_of: :flights
 
+  has_many :user_flights,
+           class_name: 'User::Flight',
+           inverse_of: :airline_flight,
+           dependent: :destroy
+
   # ActiveRecord validations
   validates :flight,
             presence:     true,

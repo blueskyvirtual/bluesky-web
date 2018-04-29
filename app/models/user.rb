@@ -27,6 +27,11 @@ class User < ApplicationRecord
 
   belongs_to :user_status, class_name: 'User::Status', inverse_of: :users
 
+  has_many :user_flights,
+           class_name: 'User::Flight',
+           inverse_of: :user,
+           dependent: :destroy
+
   has_many :user_networks,
            class_name: 'User::Network',
            inverse_of: :user,

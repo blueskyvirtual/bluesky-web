@@ -13,6 +13,7 @@ RSpec.describe User, type: :model do
     it { expect(user).to belong_to(:rank) }
     it { expect(user).to belong_to(:region) }
     it { expect(user).to have_many(:networks).through(:user_networks) }
+    it { expect(user).to have_many(:user_flights) }
   end
   # describe 'ActiveRecord associations'
 

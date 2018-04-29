@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180219213611) do
+ActiveRecord::Schema.define(version: 20180429170615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -133,6 +133,21 @@ ActiveRecord::Schema.define(version: 20180219213611) do
     t.index ["local_code"], name: "index_regions_on_local_code"
   end
 
+  create_table "user_flights", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.uuid "airline_flight_id", null: false
+    t.uuid "aircraft_type_id", null: false
+    t.datetime "time_out", null: false
+    t.datetime "time_off", null: false
+    t.datetime "time_on", null: false
+    t.datetime "time_in", null: false
+    t.text "route", null: false
+    t.text "remarks"
+    t.uuid "network_id"
+    t.decimal "duration", precision: 3, scale: 1, null: false
+    t.boolean "approved", default: false
+  end
+
   create_table "user_networks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.uuid "network_id", null: false
@@ -193,6 +208,10 @@ ActiveRecord::Schema.define(version: 20180219213611) do
   add_foreign_key "airline_flights", "airports", column: "origin_id"
   add_foreign_key "airport_runways", "airports"
   add_foreign_key "regions", "countries"
+  add_foreign_key "user_flights", "aircraft_types"
+  add_foreign_key "user_flights", "airline_flights"
+  add_foreign_key "user_flights", "networks"
+  add_foreign_key "user_flights", "users"
   add_foreign_key "user_networks", "networks"
   add_foreign_key "users", "airports", column: "home_airport_id"
   add_foreign_key "users", "regions"
