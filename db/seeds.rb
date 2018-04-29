@@ -29,5 +29,6 @@ User::Rank.create([
 User::Status.create([
   { name: 'Active',   allow_login: true,  show_on_roster: true  },
   { name: 'Inactive', allow_login: false, show_on_roster: false },
+  { name: 'On Leave', allow_login: true,  show_on_roster: true  },
   { name: 'Retired',  allow_login: false, show_on_roster: true  }
 ])
