@@ -66,7 +66,7 @@
         </td>
         <td class="d-inline-block col-10 text-left">
           <% if @user.sign_in_count > 0 %>
-            <%= @user.sign_in_count %>, last at <%= @user.last_sign_in_at.strftime('%-m/%e/%Y %H:%M %Z') %>
+            <%= @user.sign_in_count %>, last at <%= datetime_display(@user, :last_sign_in_at) %>
           <% else %>
             <i>Never</i>
           <% end %>
@@ -84,7 +84,9 @@
           Total Flights
         </td>
         <td class="d-inline-block col-10 text-left">
-          TBD legs, hours &middot; <%= link_to 'View Logbook', '#' %>
+          <%= pluralize(@user.user_flights.count, 'leg') %>,
+          <%= pluralize(@user.user_flights.sum(:duration), 'hour') %>
+          &middot; <%= link_to 'View Logbook', '#' %>
         </td>
       </tr>
 
@@ -93,7 +95,8 @@
           Online Flights
         </td>
         <td class="d-inline-block col-10 text-left">
-          TBD legs, hours
+          <%= pluralize(@user.user_flights.online.count, 'leg') %>,
+          <%= pluralize(@user.user_flights.online.sum(:duration), 'hour') %>
         </td>
       </tr>
 
@@ -102,7 +105,7 @@
           ACARS Flights
         </td>
         <td class="d-inline-block col-10 text-left">
-          TBD legs, hours
+          <span class="text-danger">TBD legs, hours</span>
         </td>
       </tr>
 
@@ -111,7 +114,7 @@
           Awards
         </td>
         <td class="d-inline-block col-10 text-left">
-          Awards list TBD
+          <span class="text-danger">Awards list TBD</span>
         </td>
       </tr>
 

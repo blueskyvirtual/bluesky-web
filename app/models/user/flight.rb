@@ -35,6 +35,10 @@ class User::Flight < ApplicationRecord
   validate :validate_time_on
   validate :validate_time_in
 
+  # Scopes
+  default_scope { where(approved: true).order(time_in: :desc) }
+  scope :online, -> { where.not(network: nil) }
+
   private
 
   def calculate_duration

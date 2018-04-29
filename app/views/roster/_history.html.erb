@@ -16,7 +16,7 @@
     <% else %>
       <% events.each do |event| %>
       <tr>
-        <td><%= event[:date].strftime '%m/%d/%Y' %></td>
+        <td><%= date_display(event[:date]) %></td>
         <td><%= event[:description].join(', ') %></td>
         <td><%= event[:updated_by].present? ? event[:updated_by] : 'SYSTEM' %></td>
         <td><%= event[:type] %></td>

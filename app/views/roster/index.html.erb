@@ -34,9 +34,9 @@
             <td><%= link_to user, user_path(user) %></td>
             <td><%= user.rank %></td>
             <td><%= user.home_airport.present? ? user.home_airport.ident : nil %></td>
-            <td><%= user.user_flights.where(approved: true).count %></td>
-            <td><%= user.user_flights.where(approved: true).sum(:duration).round(1) %></td>
-            <td></td>
+            <td><%= user.user_flights.count %></td>
+            <td><%= user.user_flights.sum(:duration).round(1) %></td>
+            <td><%= date_display(user.user_flights.first, :time_in) %></td>
           </tr>
           <% end %>
         <% end %>
