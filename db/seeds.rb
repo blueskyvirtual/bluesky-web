@@ -19,11 +19,11 @@ Network.create([
 ])
 
 User::Rank.create([
-  { name: 'First Officer',  automatic: true, flight_count: 0,   order: 1 },
-  { name: 'Captain',        automatic: true, flight_count: 20,  order: 2 },
-  { name: 'Senior Captain', automatic: true, flight_count: 100, order: 3 },
-  { name: 'Command Captain',  order: 4 },
-  { name: 'Chief Pilot',      order: 5 }
+  { name: 'First Officer',   automatic: true, flight_count: 0,    order: 1 },
+  { name: 'Captain',         automatic: true, flight_count: 10,   order: 2 },
+  { name: 'Senior Captain',  automatic: true, flight_count: 100,  order: 3 },
+  { name: 'Command Captain', automatic: true, flight_count: 1000, order: 4 },
+  { name: 'Chief Pilot',     order: 5 }
 ])
 
 User::Status.create([
