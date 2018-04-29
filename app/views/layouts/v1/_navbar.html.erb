@@ -6,47 +6,25 @@
     <% end %>
 
     <div class="collapse navbar-collapse flex-sm-row" id="navbarContent">
-      <% unless user_signed_in? %>
+      <% if user_signed_in? %>
         <ul class="navbar-nav text-uppercase">
-          <li>
-            <%= link_to 'Features', "#{root_path}#features", class: 'nav-link scroll-to' %>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarInfoDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Information
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarInfoDropdownMenuLink">
-              <a class="dropdown-item" href="#">News</a>
-              <a class="dropdown-item" href="#">NOTAMS</a>
-              <a class="dropdown-item" href="#">Users logged in</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarFlightsDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Flights
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarFlightsDropdownMenuLink">
-              <a class="dropdown-item" href="#">Airlines</a>
-              <a class="dropdown-item" href="#">Schedule</a>
-              <a class="dropdown-item" href="#">Live Map</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarPeopleDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              People
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarPeopleDropdownMenuLink">
-              <%= link_to 'Roster', users_path, class: 'dropdown-item' %>
-              <a class="dropdown-item" href="#">Awards</a>
-              <a class="dropdown-item" href="#">Statistics</a>
-            </div>
-          </li>
-          <li>
-            <%= link_to 'Join', new_user_registration_path, class: 'nav-link' %>
-          </li>
-          <li>
-            <%= link_to 'Contact', "#{root_path}#contact", class: 'nav-link scroll-to' %>
-          </li>
+          <%= render 'layouts/v1/navbar/information' %>
+          <%= render 'layouts/v1/navbar/flights' %>
+          <%= render 'layouts/v1/navbar/people' %>
+          <%= render 'layouts/v1/navbar/contact' %>
+        </ul>
+
+        <ul class="navbar-nav text-uppercase ml-auto">
+          <%= render 'layouts/v1/navbar/user' %>
+        </ul>
+      <% else %>
+        <ul class="navbar-nav text-uppercase">
+          <%= render 'layouts/v1/navbar/features' %>
+          <%= render 'layouts/v1/navbar/information' %>
+          <%= render 'layouts/v1/navbar/flights' %>
+          <%= render 'layouts/v1/navbar/people' %>
+          <%= render 'layouts/v1/navbar/join' %>
+          <%= render 'layouts/v1/navbar/contact' %>
         </ul>
 
         <ul class="navbar-nav text-uppercase ml-auto">
