@@ -18,7 +18,7 @@
 
   <body>
     <%= render partial: 'layouts/v1/navbar' %>
-    <%= render partial: 'layouts/v1/alerts' unless :devise_controller? %>
+    <%= render partial: 'layouts/v1/alerts' unless devise_controller? %>
 
     <main role="main">
       <%= yield %>

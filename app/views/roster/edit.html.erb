@@ -1,0 +1,222 @@
+<%= content_for(:title, "#{@user} (#{@user.pilot_id})") %>
+
+<%= form_for @user do |f| %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10">
+      <h3><%= @user.rank %> <%= @user %></h3>
+    </div>
+    <div class="col-sm-2 text-right align-self-center">
+      <% if policy(@user).destroy? -%>
+        <%= link_to user_path(@user), method: :delete, class: 'btn btn-sm btn-danger', 'data-confirm': "Are you sure you want to completely delete #{@user}? This will remove ALL history associated with them." do %>
+          <%= fa_icon 'trash' %> Delete
+        <% end %>
+      <% end -%>
+    </div>
+  </div>
+
+  <div class="row">
+    <table class="table table-sm table-bordered text-center small border-0">
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase pt-2">
+          Pilot ID
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          <div class="form-row">
+            <div class="col-sm-2">
+              <%= f.text_field :pilot_id, class: 'form-control form-control-sm', required: true %>
+              <% if @user.errors[:pilot_id].present? %>
+                <small class="form-text text-danger">
+                  Pilot ID <%= @user.errors[:pilot_id].join(', ') %>
+                </small>
+              <% end %>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase pt-2">
+          Name
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          <div class="form-row">
+            <div class="col-sm-4">
+              <%= f.text_field :first_name, class: 'form-control form-control-sm', required: true %>
+              <% if @user.errors[:first_name].present? %>
+                <small class="form-text text-danger">
+                  First Name <%= @user.errors[:first_name].join(', ') %>
+                </small>
+              <% end %>
+            </div>
+            <div class="col-sm-4">
+              <%= f.text_field :last_name, class: 'form-control form-control-sm', required: true %>
+              <% if @user.errors[:last_name].present? %>
+                <small class="form-text text-danger">
+                  Last Name <%= @user.errors[:last_name].join(', ') %>
+                </small>
+              <% end %>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase pt-2">
+          Rank
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          <div class="form-row">
+            <div class="col-sm-4">
+              <%= f.collection_select :rank_id, User::Rank.all, :id, :name, {}, {class: 'form-control form-control-sm'} %>
+              <% if @user.errors[:rank].present? %>
+                <small class="form-text text-danger">
+                  Rank <%= @user.errors[:rank].join(', ') %>
+                </small>
+              <% end %>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase pt-2">
+          Email
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          <%= f.email_field :email, class: 'form-control form-control-sm', required: true %>
+          <% if @user.errors[:email].present? %>
+            <small class="form-text text-danger">
+              Email <%= @user.errors[:email].join(', ') %>
+            </small>
+          <% end %>
+          <% if @user.unconfirmed_email.present? %>
+            <small class="form-text text-success">
+              <%= @user.unconfirmed_email %> is pending user confirmation
+            </small>
+          <% end %>
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase pt-2">
+          Password Reset
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          <div class="form-row">
+            <div class="col-sm-6">
+              <%= link_to 'Send password reset instructions', user_send_password_reset_path(@user), method: :post, 'data-confirm': "Are you sure you want to send #{@user} a password reset email?" %>
+            </div>
+            <div class="col-sm-6">
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase pt-2">
+          Pilot Status
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          <div class="form-row">
+            <div class="col-sm-2">
+              <%= f.collection_select :user_status_id, User::Status.all, :id, :name, {}, { class: 'form-control form-control-sm' } %>
+              <% if @user.errors[:user_status].present? %>
+                <small class="form-text text-danger">
+                  Pilot status <%= @user.errors[:user_status].join(', ') %>
+                </small>
+              <% end %>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase">
+          Home Airport
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          <div class="form-row">
+            <div class="col-sm-1">
+              <%= text_field_tag :home_airport_ident, @user.home_airport.to_param, placeholder: 'ICAO', maxlength: 4, id: 'roster_airport_ident', class: 'form-control form-control-sm text-uppercase' %>
+              <%= f.hidden_field :home_airport_id, id: 'home_airport_id' %>
+              <% if @user.errors[:home_airport].present? %>
+                <small class="form-text text-danger">
+                  Airport <%= @user.errors[:home_airport].join(', ') %>
+                </small>
+              <% end %>
+            </div>
+            <div class="col-sm-11 pt-1">
+              <span id="roster_home_airport">
+                <%= @user.home_airport.present? ? @user.home_airport : 'Unspecified' %>
+              </span>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase">
+          Networks
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          <%= f.fields_for :user_networks do |user_network| %>
+            <%= render 'user_network_fields', f: user_network %>
+          <% end %>
+          <div class="form-row" id="user-networks">
+            <div class="col-sm-2">
+              <%= link_to_add_association f, :user_networks,
+                                          class: 'btn btn-sm btn-success mt-1',
+                                          'data-association-insertion-method': :before,
+                                          'data-association-insertion-node': '#user-networks' do %>
+                <%= fa_icon 'plus' %> Add
+              <% end %>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase">
+          Location
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          <div class="form-row">
+            <div class="col-sm-4">
+              <%= select_tag :country, roster_country_select(@user), {include_blank: 'Unspecified', id: 'roster_countries_select', class: 'form-control form-control-sm' } %>
+            </div>
+            <div class="col-sm-4">
+              <%= f.select :region_id, roster_region_select(@user), {prompt: 'Select country'}, { id: 'roster_regions_select', class: 'form-control form-control-sm' } %>
+              <% if @user.errors[:region].present? %>
+                <small class="form-text text-danger">
+                  Region <%= @user.errors[:region].join(', ') %>
+                </small>
+              <% end %>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td colspan="2" class="col-12 bg-primary text-white text-uppercase border-0">
+          &nbsp;
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase pt-1">
+          Confirm
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          <% if policy(@user).update? -%>
+            <%= button_tag type: 'submit', class: 'btn btn-sm btn-success' do %>
+              <%= fa_icon 'save' %> Save
+            <% end %>
+          <% end -%>
+        </td>
+      </tr>
+
+    </table>
+  </div>
+</div>
+<% end %>

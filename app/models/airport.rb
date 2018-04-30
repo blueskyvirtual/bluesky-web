@@ -4,6 +4,10 @@ class Airport < ApplicationRecord
   # Audits
   audited
 
+  # FriendlyID configuration
+  extend FriendlyId
+  friendly_id :ident
+
   # ActiveRecord associations
   belongs_to :region
 

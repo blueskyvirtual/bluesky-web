@@ -1,0 +1,21 @@
+<div class="form-row nested-fields">
+  <div class="col-sm-2">
+    <%= f.collection_select :network_id, Network.all, :id, :name, {}, { class: 'form-control form-control-sm' } %>
+    <% if f.object.errors[:user].present? %>
+      <small class="form-text text-danger">
+        Network <%= f.object.errors[:user].join(', ') %>
+      </small>
+    <% end %>
+  </div>
+  <div class="col-sm-3">
+    <%= f.text_field :username, placeholder: 'Username/ID', class: 'form-control form-control-sm' %>
+    <% if f.object.errors[:username].present? %>
+      <small class="form-text text-danger">
+        Username <%= f.object.errors[:username].join(', ') %>
+      </small>
+    <% end %>
+  </div>
+  <div class="col-sm-7">
+    <%= link_to_remove_association 'Remove', f, class: 'btn btn-sm btn-outline-danger' %>
+  </div>
+</div>

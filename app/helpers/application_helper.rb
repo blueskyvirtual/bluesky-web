@@ -24,7 +24,7 @@ module ApplicationHelper
   #
   def datetime_display(obj, field = nil)
     return if obj.blank?
-    format = '%m/%e/%Y %H:%M %Z'
+    format = '%m/%d/%Y %H:%M %Z'
 
     if obj.is_a? ActiveRecord::Base
       obj.send(field.to_sym).strftime(format)

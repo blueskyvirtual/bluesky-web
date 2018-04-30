@@ -16,10 +16,10 @@
           <th scope="col">Pilot ID</th>
           <th scope="col">Pilot Name</th>
           <th scope="col">Rank</th>
-          <th scope="col">Home</th>
+          <th scope="col">Status</th>
           <th scope="col">Flights</th>
           <th scope="col">Hours</th>
-          <th scope="col">Last Flight</th>
+          <th scope="col" class="d-none d-sm-table-cell">Last Flight</th>
         </tr>
       </thead>
       <tbody>
@@ -33,10 +33,10 @@
             <td><%= user.pilot_id %></td>
             <td><%= link_to user, user_path(user) %></td>
             <td><%= user.rank %></td>
-            <td><%= user.home_airport.present? ? user.home_airport.ident : nil %></td>
+            <td><%= user.user_status %></td>
             <td><%= user.user_flights.count %></td>
             <td><%= user.user_flights.sum(:duration).round(1) %></td>
-            <td><%= date_display(user.user_flights.first, :time_in) %></td>
+            <td class="d-none d-sm-table-cell"><%= date_display(user.user_flights.first, :time_in) %></td>
           </tr>
           <% end %>
         <% end %>

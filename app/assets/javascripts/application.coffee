@@ -15,6 +15,7 @@
 #= require jquery3
 #= require popper
 #= require bootstrap
+#= require cocoon
 #= require cookieconsent.min
 #= require_tree .
 

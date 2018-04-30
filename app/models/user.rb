@@ -53,6 +53,9 @@ class User < ApplicationRecord
   validates :first_name, presence: true,   allow_blank: false
   validates :last_name,  presence: true,   allow_blank: false
 
+  # Nested Attributes
+  accepts_nested_attributes_for :user_networks, allow_destroy: true
+
   def first_name=(str)
     str.nil? ? super(str) : super(str.titleize)
   end

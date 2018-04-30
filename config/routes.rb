@@ -20,5 +20,19 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  resources :roster, only: %i[index show], as: :users
+  # API Namespace
+  namespace :api do
+    namespace :v2 do
+      resources :airports, only: %i[show]
+
+      resources :countries, only: %i[index show] do
+        resources :regions, only: %i[index show]
+      end
+    end
+  end
+
+  # Frontend Namespace
+  resources :roster, as: :users do
+    post 'send_password_reset'
+  end
 end

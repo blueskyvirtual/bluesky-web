@@ -11,6 +11,12 @@ FactoryBot.define do
     password { pass }
     password_confirmation { pass }
 
+    trait :invalid do
+      first_name { nil }
+      last_name  { nil }
+      email      { nil }
+    end
+
     trait :confirmed do
       after(:create, &:confirm)
     end

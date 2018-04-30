@@ -1,6 +1,31 @@
 # frozen_string_literal: true
 
 module RosterHelper
+  # Returns country options for select for a user's currently
+  # selected location/country
+  #
+  def roster_country_select(user)
+    selected_country = user.region.blank? ? nil : user.region.country.to_param
+
+    options_for_select(
+      Country.all.collect { |country| [country.name, country.to_param] },
+      selected: selected_country
+    )
+  end
+
+  # Returns region options for select for a user's currently
+  # selected location/region
+  #
+  def roster_region_select(user)
+    return [] if user.region.blank?
+    regions = user.region.country.regions
+
+    options_for_select(
+      regions.collect { |region| [region.name, region.id] },
+      selected: user.region.id
+    )
+  end
+
   # Returns options for select based on the allowed sortable_columns
   # and the currently select sort_column
   #
@@ -59,29 +84,23 @@ module RosterHelper
   # a user:
   #   { network: 'VATSIM', username: link_to obj or username if no stats url }
   #
-  # rubocop:disable Metrics/AbcSize
   def roster_user_networks(user)
     networks = []
 
-    user.user_networks.joins(:network) \
-        .order('networks.name') \
-        .pluck(:name, :username, :stats_url) \
-        .each do |network|
+    user.user_networks.each do |reg|
+      network = reg.network
 
-      url = if network[2].present?
-              link_to(network[1], network[2] + network[1])
+      url = if network.stats_url.present?
+              link_to reg.username, network.stats_url + reg.username
             else
-              network[1]
+              reg.username
             end
 
-      networks.push(
-        name: network[0], username: url
-      )
+      networks.push name: network.name, username: url
     end
 
     networks
   end
-  # rubocop:enable Metrics/AbcSize
 
   # Method included for RSpec tests to pass
   #

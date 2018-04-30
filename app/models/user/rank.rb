@@ -33,6 +33,9 @@ class User::Rank < ApplicationRecord
             numericality: { greater_than_or_equal_to: 0 },
             uniqueness: { case_sensitive: false }
 
+  # Scopes
+  default_scope { order(order: :asc) }
+
   def to_s
     name
   end

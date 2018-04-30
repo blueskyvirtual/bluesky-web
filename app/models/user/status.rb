@@ -17,6 +17,9 @@ class User::Status < ApplicationRecord
             allow_blank: false,
             uniqueness: { case_sensitive: false }
 
+  # Scopes
+  default_scope { order(:name) }
+
   def name=(str)
     str.nil? ? super(str) : super(str.titleize)
   end

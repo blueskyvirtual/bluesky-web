@@ -4,6 +4,10 @@ class Region < ApplicationRecord
   # Audits
   audited
 
+  # FriendlyID configuration
+  extend FriendlyId
+  friendly_id :code
+
   # ActiveRecord callbacks
   before_destroy :ensure_no_users
 

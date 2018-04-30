@@ -1,13 +1,28 @@
 <%= content_for(:title, "#{@user} (#{@user.pilot_id})") %>
 <div class="container">
   <div class="row">
-    <div class="col-sm-12">
-      <h3><%= @user.rank %> <%= @user %> (<%= @user.pilot_id %>)</h3>
+    <div class="col-sm-10">
+      <h3><%= @user.rank %> <%= @user %></h3>
+    </div>
+    <div class="col-sm-2 text-right align-self-center">
+      <% if policy(@user).update? -%>
+        <%= link_to edit_user_path(@user), class: 'btn btn-sm btn-secondary' do %>
+          <%= fa_icon 'edit' %> Edit
+        <% end %>
+      <% end -%>
     </div>
   </div>
 
   <div class="row">
     <table class="table table-sm table-bordered text-center small border-0">
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase">
+          Pilot ID
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          <%= @user.pilot_id %>
+        </td>
+      </tr>
       <tr class="row m-0">
         <td class="d-inline-block col-2 bg-primary text-white text-uppercase">
           Pilot Status
@@ -94,7 +109,7 @@
         <td class="d-inline-block col-2 bg-primary text-white text-uppercase">
           Online Flights
         </td>
-        <td class="d-inline-block col-10 text-left">
+        <td class="d-inline-block col-10 text-left text-success">
           <%= pluralize(@user.user_flights.online.count, 'leg') %>,
           <%= pluralize(@user.user_flights.online.sum(:duration), 'hour') %>
         </td>

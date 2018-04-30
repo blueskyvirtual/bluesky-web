@@ -1,9 +1,8 @@
 .alert-container {
-  position: fixed;
-  top: 55px;
+  position: relative;
+  top: -10px;
   text-align: center;
   width: 100%;
-  z-index: 2000;
 }
 
 .alert {
