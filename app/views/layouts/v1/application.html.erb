@@ -10,8 +10,12 @@
     <%= favicon_link_tag 'blueskyv2-icon.png' %>
     <%= favicon_link_tag 'blueskyv2-icon.png', rel: 'apple-touch-icon', type: 'image/png' %>
 
+    <%= action_cable_meta_tag %>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASuCOSMUiX7YCAPKwlDvKlFPaewQ9I-sI"></script>
 
     <%= render partial: 'layouts/analytics' %>
   </head>

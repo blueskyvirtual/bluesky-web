@@ -9,6 +9,7 @@
 Airline::Flight::Type.create([
   { name: 'Charter' },
   { name: 'Event' },
+  { name: 'Historic' },
   { name: 'Scheduled' }
 ])
 

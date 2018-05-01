@@ -1,0 +1,11 @@
+<%= content_for(:title, "Flight #{@flight.airline.icao} #{@flight.flight}") %>
+<div class="container">
+  <%= content_for :status, 'Edit Mode' %>
+  <%= content_for :status_class, 'text-danger text-uppercase' %>
+
+  <%= render partial: 'header' %>
+
+  <%= render partial: 'banner' %>
+
+  <%= render 'form' %>
+</div>

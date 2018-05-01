@@ -87,6 +87,10 @@ B783,783,Boeing 787-3,787-3,H,heavy
 B788,788,Boeing 787-8,787-8,H,heavy
 B789,789,Boeing 787-9,787-9,H,heavy
 B78J,78J,Boeing 787-10,787-10,H,heavy
+B37M,37M,Boeing 737 MAX 7,737 MAX 7,,medium
+B38M,38M,Boeing 737 MAX 8,737 MAX 8,,medium
+B39M,39M,Boeing 737 MAX 9,737 MAX 9,,medium
+B3JM,3JM,Boeing 737 MAX 10,737 MAX 10,,medium
 BA11,B11,British Aerospace (BAC) One Eleven,BAE-11,,medium
 BCS1,CS1,Bombardier CS100,CS100,,medium
 BCS3,CS3,Bombardier CS300,CS300,,medium
@@ -158,8 +162,10 @@ E120,EM2,Embraer EMB 120 Brasilia,EMB-120,,small
 E135,ER3,Embraer RJ135,ERJ-135,,small
 E135,ERD,Embraer RJ140,ERJ-140,,small
 E145,ER4,Embraer RJ145,ERJ-145,,small
+E45X,ERX,Embraer EMB-145XR,ERJ-145X,,small
 E170,E70,Embraer 170,ERJ-170,,small
-E175,E75,Embraer 175,ERJ-175,,small
+E17L,E75,Embraer 175,ERJ-175,,small
+E75S,E75,Embraer 175S,ERJ-175S,,small
 E190,E90,Embraer 190,ERJ-190,,small
 E190,E90,Embraer 195,ERJ-195,,small
 E35L,ER3,Embraer Legacy 600 / Legacy 650,ERJ-L600,,small

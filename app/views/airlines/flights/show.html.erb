@@ -1,0 +1,79 @@
+<%= content_for(:title, "Flight #{@flight.airline.icao}#{@flight.flight}") %>
+<div class="container">
+  <%= content_for :status, @flight.flight_type.name %>
+  <%= content_for :status_class, 'text-primary' %>
+
+  <%= content_for :button_area do %>
+    <% if policy(@flight).update? -%>
+      <%= link_to edit_airline_flight_path(@flight.airline, @flight), class: 'btn btn-sm btn-secondary' do %>
+        <%= fa_icon 'edit' %> Edit
+      <% end %>
+    <% end -%>
+  <% end %>
+
+  <%= render partial: 'header' %>
+  <%= render partial: 'banner' %>
+
+  <div class="row">
+    <table class="table table-sm table-bordered text-center small border-0">
+      <tr class="row m-0">
+        <td colspan="2" class="col-12 bg-primary text-white text-uppercase border-0">
+          Flight Map
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td colspan="2" class="col-12 border-0 text-left" id="airline-flight-map">
+          Loading Flight Map
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td colspan="2" class="col-12 bg-primary text-white text-uppercase border-0">
+          History
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td colspan="2" class="col-12 border-0 p-0">
+          <table class="table table-sm text-center small">
+            <tr class="row m-0 bg-secondary text-white">
+              <th class="col-2 border-top-0">Date</th>
+              <th class="col-2 border-top-0">Departure</th>
+              <th class="col-2 border-top-0">Arrival</th>
+              <th class="col-2 border-top-0">Aircraft</th>
+              <th class="col-2 border-top-0">Duration</th>
+              <th class="col-2 border-top-0">Crew</th>
+            </tr>
+
+            <% if @history.empty? -%>
+              <tr class="row m-0">
+                <td class="col-sm-12">
+                  <i>No history</i>
+                </td>
+              </tr>
+            <% end -%>
+
+            <% @history.each do |flight| -%>
+              <tr class="row m-0">
+                <td class="col-2"><%= date_display(flight.time_out) %></td>
+                <td class="col-2"><%= time_display(flight.time_out) %></td>
+                <td class="col-2"><%= time_display(flight.time_in) %></td>
+                <td class="col-2"><%= flight.aircraft_type.icao %></td>
+                <td class="col-2"><%= flight_history_duration(flight) %></td>
+                <td class="col-2"><%= link_to flight.user.pilot_id, user_path(flight.user) %></td>
+              </tr>
+
+            <% end -%>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="row">
+    <div class="mx-auto">
+      <%= paginate @history, theme: 'twitter-bootstrap-4', pagination_class: 'pagination-sm' %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<div class="container">
+  <%= form_for @airline do |f| %>
+
+  <table class="table table-sm table-bordered text-center small border-0">
+
+    <tr class="row m-0">
+      <td class="d-inline-block col-2 bg-primary text-white text-uppercase pt-2">
+        ICAO
+      </td>
+      <td class="d-inline-block col-10 text-left">
+        <div class="form-row">
+          <div class="col-sm-2">
+            <%= f.text_field :icao, class: 'form-control form-control-sm', required: true %>
+            <% if @airline.errors[:icao].present? %>
+              <small class="form-text text-danger">
+                ICAO <%= @airline.errors[:icao].join(', ') %>
+              </small>
+            <% end %>
+          </div>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row m-0">
+      <td class="d-inline-block col-2 bg-primary text-white text-uppercase pt-2">
+        IATA
+      </td>
+      <td class="d-inline-block col-10 text-left">
+        <div class="form-row">
+          <div class="col-sm-2">
+            <%= f.text_field :iata, class: 'form-control form-control-sm' %>
+            <% if @airline.errors[:iata].present? %>
+              <small class="form-text text-danger">
+                ICAO <%= @airline.errors[:iata].join(', ') %>
+              </small>
+            <% end %>
+          </div>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row m-0">
+      <td class="d-inline-block col-2 bg-primary text-white text-uppercase pt-2">
+        Name
+      </td>
+      <td class="d-inline-block col-10 text-left">
+        <div class="form-row">
+          <div class="col-sm-4">
+            <%= f.text_field :name, class: 'form-control form-control-sm', required: true %>
+            <% if @airline.errors[:name].present? %>
+              <small class="form-text text-danger">
+                Name <%= @airline.errors[:name].join(', ') %>
+              </small>
+            <% end %>
+          </div>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row m-0">
+      <td colspan="2" class="col-12 bg-primary text-white text-uppercase border-0">
+        &nbsp;
+      </td>
+    </tr>
+
+    <tr class="row m-0">
+      <td class="d-inline-block col-2 bg-primary text-white text-uppercase pt-1">
+        Confirm
+      </td>
+      <td class="d-inline-block col-10 text-left">
+        <% if policy(@airline).update? -%>
+          <%= f.button type: 'submit', class: 'btn btn-sm btn-success' do %>
+            <%= fa_icon 'save' %> Save
+          <% end %>
+        <% end -%>
+      </td>
+    </tr>
+  </table>
+
+  <% end %>
+</div>

@@ -1,0 +1,49 @@
+<div class="container" id="airlines-flights-upload">
+  <div class="row">
+    <div class="col-sm-6">
+      <h3>Airline Flights Upload</h3>
+    </div>
+  </div>
+
+  <div class="row bg-light pb-1 mb-2">
+    <div class="col-sm-10 mb-2 pt-1">
+      <%= form_tag('#', multipart: true, id: 'airlines-flights-upload-form') do %>
+        <%= file_field_tag 'csv', class: 'from-control form-control-sm', id: 'file' %>
+        <%= button_tag type: 'submit', class: 'btn btn-sm btn-success', id: 'submit' do %>
+          <%= fa_icon 'upload' %> Upload
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-sm-2 text-right pt-2">
+      <%= link_to '/examples/airline_flights.csv', class: 'btn btn-sm btn-primary', download: 'example.csv' do %>
+        <%= fa_icon 'download' %> Example CSV
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 mb-1">
+      <div class="progress">
+        <div class="progress-bar bg-success" id="progressbar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <table class="table table-sm table-bordered text-center small">
+      <thead>
+      <tr class="bg-primary text-white text-uppercase">
+        <th scope="col">Status Console</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="1" class="border-0 p-0">
+            <div class="pl-1 airline-flight-upload-console" id="console"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

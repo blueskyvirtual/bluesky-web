@@ -3,8 +3,12 @@
     Flights
   </a>
   <div class="dropdown-menu" aria-labelledby="navbarFlightsDropdownMenuLink">
-    <a class="dropdown-item" href="#">Airlines</a>
-    <a class="dropdown-item" href="#">Schedule</a>
+    <%= link_to 'Airlines', airlines_path, class: 'dropdown-item' %>
+    <%= link_to 'Schedule', schedule_index_path, class: 'dropdown-item' %>
     <a class="dropdown-item" href="#">Live Map</a>
+
+    <% if user_signed_in? && policy(Airline::Flight).create? -%>
+      <%= link_to 'Upload', airline_flight_upload_path, class: 'dropdown-item' %>
+    <% end -%>
   </div>
 </li>

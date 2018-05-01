@@ -3,8 +3,11 @@
 @import "bootstrap";
 @import "cookieconsent.min";
 @import "font-awesome";
+@import "leaflet";
 
 // Application specific SCSS
+@import "airlines/flights";
+@import "airlines";
 @import "alerts";
 @import "login";
 @import "navbar";

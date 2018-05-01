@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180501063406) do
+ActiveRecord::Schema.define(version: 20180504203916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,23 +24,21 @@ ActiveRecord::Schema.define(version: 20180501063406) do
     t.index ["icao"], name: "index_aircraft_types_on_icao"
   end
 
-  create_table "airline_fleets", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "airline_id", null: false
-    t.uuid "aircraft_type_id", null: false
-  end
-
   create_table "airline_flight_types", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
   end
 
   create_table "airline_flights", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "fleet_id", null: false
+    t.uuid "airline_id", null: false
     t.integer "flight", null: false
     t.uuid "origin_id", null: false
     t.uuid "destination_id", null: false
     t.time "dep_time", null: false
     t.time "arv_time", null: false
-    t.uuid "type_id", null: false
+    t.uuid "aircraft_type_id", null: false
+    t.uuid "flight_type_id", null: false
+    t.decimal "distance", precision: 6, scale: 1, null: false
+    t.decimal "duration", precision: 3, scale: 1, null: false
     t.index ["destination_id"], name: "index_airline_flights_on_destination_id"
     t.index ["origin_id"], name: "index_airline_flights_on_origin_id"
   end
@@ -201,10 +199,9 @@ ActiveRecord::Schema.define(version: 20180501063406) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  add_foreign_key "airline_fleets", "aircraft_types"
-  add_foreign_key "airline_fleets", "airlines"
-  add_foreign_key "airline_flights", "airline_fleets", column: "fleet_id"
-  add_foreign_key "airline_flights", "airline_flight_types", column: "type_id"
+  add_foreign_key "airline_flights", "aircraft_types"
+  add_foreign_key "airline_flights", "airline_flight_types", column: "flight_type_id"
+  add_foreign_key "airline_flights", "airlines"
   add_foreign_key "airline_flights", "airports", column: "destination_id"
   add_foreign_key "airline_flights", "airports", column: "origin_id"
   add_foreign_key "airport_runways", "airports"

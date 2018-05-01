@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
+  mount ActionCable.server => '/cable'
+
   # API Namespace
   namespace :api do
     namespace :v2 do
@@ -32,7 +34,24 @@ Rails.application.routes.draw do
   end
 
   # Frontend Namespace
+  #
+  resources :airlines do
+    get 'route_map', to: 'airlines#route_map'
+    resources :flights, except: :index, controller: 'airlines/flights' do
+      get 'map'
+    end
+  end
+
+  get 'airlines/flights/upload',
+      to: 'airlines/flights#upload', as: 'airline_flight_upload'
+
   resources :roster, as: :users do
     post 'send_password_reset'
+  end
+
+  resources :schedule, only: :index do
+    collection do
+      match 'search' => 'schedule#search', via: %i[get post], as: :search
+    end
   end
 end

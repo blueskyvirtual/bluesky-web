@@ -10,9 +10,7 @@ RSpec.describe Airline, type: :model do
   let(:airline) { build(:airline) }
 
   describe 'ActiveRecord associations' do
-    it { expect(airline).to have_many(:fleets) }
-    it { expect(airline).to have_many(:flights).through(:fleets) }
-    it { expect(airline).to have_many(:aircraft_types).through(:fleets) }
+    it { expect(airline).to have_many(:flights) }
   end
 
   describe 'ActiveRecord validations' do
@@ -40,6 +38,13 @@ RSpec.describe Airline, type: :model do
   describe '#icao=' do
     it 'upcases the input' do
       expect(build(:airline, icao: 'aaa').icao).to eq 'AAA'
+    end
+  end
+
+  describe '#to_option_display' do
+    it 'returns the ICAO - Airline name' do
+      airline = build(:airline)
+      expect(airline.to_option_display).to eq "#{airline.icao} - #{airline.name}"
     end
   end
 end

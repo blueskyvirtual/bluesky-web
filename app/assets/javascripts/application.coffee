@@ -17,6 +17,11 @@
 #= require bootstrap
 #= require cocoon
 #= require cookieconsent.min
+#= require gmap3.min
+#= require leaflet
+#= require Leaflet.Geodesic
+#
+#= require bluesky_api
 #= require_tree .
 
 $(document).on 'turbolinks:load', ->

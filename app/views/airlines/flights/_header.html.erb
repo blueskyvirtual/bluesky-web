@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-sm-10">
+    <div class="row">
+      <div class="col-md-1 p-0">
+        <%= image_tag 'blueskyv2-icon', class: 'img-fluid d-none d-sm-block' %>
+      </div>
+      <div class="col-md-11">
+        <h3><%= @flight.airline.name %> <%= @flight.flight %></h3>
+        <h5 class="text-muted">
+          <%= @flight.aircraft_type.name %> / <%= @flight.aircraft_type.icao %> / <%= @flight.aircraft_type.iata %>
+        </h5>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-2 text-right align-self-center <%= yield :status_class %>">
+    <h4><%= yield :status %></h4>
+    <%= yield :button_area %>
+  </div>
+</div>

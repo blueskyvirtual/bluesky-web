@@ -1,0 +1,15 @@
+<%= content_for(:title, 'New Flight') %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10">
+      <h3>New Flight</h3>
+    </div>
+    <div class="col-sm-2 text-right align-self-center">
+      <%= link_to airline_flight_upload_path, class: 'btn btn-sm btn-success' do %>
+        <%= fa_icon 'upload' %> Upload
+      <% end %>
+    </div>
+  </div>
+
+  <%= render 'form' %>
+</div>

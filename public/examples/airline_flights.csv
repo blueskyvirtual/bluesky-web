@@ -1,0 +1,2 @@
+airline,flight,origin,destination,frequency,dep_time,arv_time,aircraft_type
+AAL,1,KJFK,KLAX,1234560,12:00,18:00,A321

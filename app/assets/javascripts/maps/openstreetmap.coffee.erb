@@ -1,0 +1,67 @@
+# This library uses Leaflet to create OpenStreetMaps
+# http://leafletjs.com/
+#
+# Rails Gem provided:
+# https://github.com/axyjo/leaflet-rails
+#
+# Jonathan Voss <jvoss@onvox.net>
+#
+
+$(document).on 'turbolinks:load', ->
+
+  # Creates a map at a given HTML ID and returns the map handler
+  #
+  $.fn.OpenStreetMap = (mapId) ->
+    # Base Layers
+    carto_base = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png',
+      attribution: '&copy; <a href="https://carto.com/attribution">CARTO</a>'
+      maxZoom: 18
+    )
+
+    osm_base = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      attribution: '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a>'
+      maxZoom: 18
+    )
+
+    baseMaps = {
+      'Color':     osm_base
+      'Grayscale': carto_base
+    }
+
+    overlayMaps = {}
+
+    map = L.map(mapId, {
+      center: new L.LatLng(39.8, -98.6),
+      zoom: 3,
+      layers: [carto_base, osm_base]
+    })
+
+    L.control.layers(baseMaps, overlayMaps).addTo(map);
+    return map
+
+  # Return Origin marker
+  #
+  $.fn.OpenStreetMap_AirportIcon = ->
+    return L.icon({
+      iconUrl: '<%= asset_path('maps/marker-airport-blue.png') %>'
+      iconSize: [15, 23],
+      iconAnchor: [7, 23],
+    })
+
+  # Return Origin marker
+  #
+  $.fn.OpenStreetMap_OriginIcon = ->
+    return L.icon({
+      iconUrl: '<%= asset_path('maps/marker-airport-green.png') %>'
+      iconSize: [15, 23],
+      iconAnchor: [7, 23],
+    })
+
+  # Return Destination marker
+  #
+  $.fn.OpenStreetMap_DestIcon = ->
+    return L.icon({
+      iconUrl: '<%= asset_path('maps/marker-airport-red.png') %>'
+      iconSize: [15, 23],
+      iconAnchor: [7, 23],
+    })

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
+ruby '2.5.1'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
@@ -44,13 +45,18 @@ gem 'cocoon'
 gem 'cookieconsent2-rails'
 gem 'devise'
 gem 'devise-encryptable'
+gem 'dotiw'
 gem 'font-awesome-rails'
 gem 'friendly_id', '~> 5.1.0'
+gem 'geocoder'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'pundit'
+gem 'rails-assets-leaflet', source: 'https://rails-assets.org'
+gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'time_difference'
+gem 'timezone_finder'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

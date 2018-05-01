@@ -13,6 +13,47 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe RosterHelper, type: :helper do
+  describe '#roster_country_select' do
+    before :each do
+      @user = create(:user)
+    end
+
+    it 'returns options_for_select containing countries' do
+      country = create(:country)
+
+      expected_response = "<option value=\"#{country.code}\">#{country.name}</option>"
+
+      expect(helper.roster_country_select(@user)).to eq expected_response
+    end
+
+    it 'returns options_for_select containing countries with the users selected' do
+      region  = create(:region, name: 'Test')
+      @user.region = region
+      @user.save
+
+      expected_response = "<option selected=\"selected\" value=\"#{region.country.code}\">#{region.country.name}</option>"
+
+      expect(helper.roster_country_select(@user)).to eq expected_response
+    end
+  end
+
+  describe '#roster_region_select' do
+    before :each do
+      @user = create(:user)
+    end
+
+    it 'returns blank array if user does not have a region set' do
+      expect(helper.roster_region_select(@user)).to be_empty
+    end
+
+    it 'returns options_for_select containing users region selected' do
+      @user.region = create(:region)
+      expected_response = "<option selected=\"selected\" value=\"#{@user.region.id}\">#{@user.region.name}</option>"
+
+      expect(helper.roster_region_select(@user)).to eq expected_response
+    end
+  end
+
   describe '#roster_sort_columns' do
     before :each do
       @sortable_columns = {

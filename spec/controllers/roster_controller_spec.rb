@@ -44,6 +44,12 @@ RSpec.describe RosterController, type: :controller do
         delete :destroy, params: { id: @user }
         expect(response).to redirect_to users_path
       end
+
+      it 're-renders the edit page if the User cannot be deleted' do
+        expect_any_instance_of(User).to receive(:destroy).and_return(false)
+        delete :destroy, params: { id: @user }
+        expect(response).to render_template :edit
+      end
     end
   end
 

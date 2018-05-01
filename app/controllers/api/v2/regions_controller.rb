@@ -17,7 +17,6 @@ class Api::V2::RegionsController < Api::V2::BaseController
     end
   end
 
-  # rubocop:disable Metrics/AbcSize
   def show
     country = policy_scope(Country).friendly.find(params[:country_id])
     @region = country.regions.friendly.find(params[:id])
@@ -30,5 +29,4 @@ class Api::V2::RegionsController < Api::V2::BaseController
       format.xml  { render xml:  @region }
     end
   end
-  # rubocop:enable Metrics/AbcSize
 end

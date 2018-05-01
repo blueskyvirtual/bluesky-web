@@ -1,6 +1,7 @@
 AllCops:
-  TargetRubyVersion: 2.4
+  TargetRubyVersion: 2.5
   Exclude:
+    - 'bin/**/*'
     - 'db/**/*'
     - 'lib/tasks/**/*'
     - '**/templates/**/*'
@@ -9,10 +10,14 @@ AllCops:
 Rails:
   Enabled: true
 
+Metrics/AbcSize:
+  Max: 20
+
 # Exclude block length metrics for RSpec tests
 Metrics/BlockLength:
   Exclude:
     - 'config/environments/**/*'
+    - 'config/routes.rb'
     - 'spec/**/*'
 
 Metrics/LineLength:

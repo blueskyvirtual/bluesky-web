@@ -4,15 +4,12 @@ class Airline < ApplicationRecord
   # Audits
   audited
 
+  # FriendlyID configuration
+  extend FriendlyId
+  friendly_id :icao
+
   # ActiveRecord associations
-  has_many :aircraft_types, through: :fleets
-
-  has_many :fleets,
-           class_name: 'Airline::Fleet',
-           inverse_of: :airline,
-           dependent:  :destroy
-
-  has_many :flights, through: :fleets, dependent: :destroy
+  has_many :flights, dependent: :destroy
 
   # ActiveRecord validations
   validates :icao,
@@ -30,5 +27,14 @@ class Airline < ApplicationRecord
 
   def icao=(str)
     str.nil? ? super(str) : super(str.upcase)
+  end
+
+  # Display ICAO - Airline name
+  #
+  # Used in helpers to collect form options like
+  # schedule searching
+  #
+  def to_option_display
+    "#{icao} - #{name}"
   end
 end

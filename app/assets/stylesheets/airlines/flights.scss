@@ -1,0 +1,16 @@
+// Place all the styles related to the airlines/flights controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.airline-flight-upload-console {
+  background-color: #000000;
+  color: #cccccc;
+  font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace;
+  height: 60vh;
+  overflow-y: scroll;
+  text-align: left;
+}
+
+#airline-flight-map {
+  height: 40vh;
+}

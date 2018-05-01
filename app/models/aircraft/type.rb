@@ -5,13 +5,13 @@ class Aircraft::Type < ApplicationRecord
   audited
 
   # ActiveRecord associations
-  has_many :fleets,
-           class_name:  'Airline::Fleet',
+  has_many :airline_flights,
+           class_name: 'Airline::Flight',
            foreign_key: :aircraft_type_id,
            inverse_of:  :aircraft_type,
            dependent:   :destroy
 
-  has_many :airlines, through: :fleets
+  has_many :airlines, through: :airline_flights
 
   has_many :user_flights,
            class_name: 'User::Flight',

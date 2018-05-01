@@ -1,0 +1,69 @@
+<div class="container-fluid">
+  <%= search_form_for @q, url: search_schedule_index_path, class: 'form-horizontal', html: { method: :post } do |f| %>
+    <div class="form-group row">
+      <div class="col-md-6">
+        <div class="form-inline">
+          <%= f.label :airline_icao_eq, 'Airline', class: 'mr-sm-2 col-md-1' %>
+          <%= f.select :airline_icao_eq, airlines_options, {include_blank: 'All'}, class: 'form-control form-control-sm col-md-10' %>
+        </div>
+      </div>
+
+      <div class="col-md-6 mx-auto">
+        <div class="form-inline">
+          <%= f.label :aircraft_type_icao_eq, 'Equipment', class: 'col-md-2' %>
+          <%= f.select :aircraft_type_icao_eq, aircraft_options, {include_blank: 'All'}, id: 'scheduleEquipment', class: 'form-control form-control-sm col-md-10' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-6">
+        <div class="form-inline">
+          <%= f.label :flight_eq, 'Flight', class: 'mr-sm-3' %>
+          <%= f.search_field :flight_eq, class: 'form-control form-control-sm', size: 4 %>
+
+          <%= f.label :flight_type_name_eq, 'Type', class: 'col-md-2' %>
+          <%= f.select :flight_type_name_eq, flight_type_options, {include_blank: 'All'}, class: 'form-control form-control-sm col-md-6' %>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-inline">
+          <span class="mx-auto d-none d-sm-block"></span>
+
+          <%= f.label :distance_gteq, 'Distance (nm)', class: 'mr-sm-2' %>
+          <%= f.search_field :distance_gteq, class: 'form-control form-control-sm text-uppercase mr-sm-2', placeholder: '0', size: 4 %>
+
+          <%= f.label :duration_gteq, 'Duration', class: 'mr-sm-2' %>
+          <%= f.search_field :duration_gteq, class: 'form-control form-control-sm text-uppercase', placeholder: '0.0', size: 4 %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-6">
+        <div class="form-inline">
+          <%= f.label :origin_ident_eq, 'Origin', class: 'mr-sm-2 col-md-1' %>
+          <%= f.select :origin_ident_eq, origin_airport_options, {include_blank: 'All'}, class: 'form-control form-control-sm col-md-8', id: 'fs_origin_select' %>
+          <%= f.search_field :origin_ident_cont, id: 'fs_origin_search', class: 'form-control form-control-sm text-uppercase col-md-2', placeholder: 'Ident' %>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-inline">
+          <%= f.label :destination_ident_eq, 'Destination', class: 'mr-sm-2 col-sm-2' %>
+          <%= f.select :destination_ident_eq, destination_airport_options, {include_blank: 'All'}, class: 'form-control form-control-sm col-md-7', id: 'fs_destination_select' %>
+          <%= f.search_field :destination_ident_cont, id: 'fs_origin_search', class: 'form-control form-control-sm text-uppercase col-sm-2', placeholder: 'Ident' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-12 text-center">
+        <%= button_tag(type: 'submit', class: 'btn btn-primary btn-sm') do %>
+          <%= fa_icon :search %> Search Schedule
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

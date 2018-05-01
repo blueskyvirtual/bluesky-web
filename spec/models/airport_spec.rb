@@ -61,8 +61,30 @@ RSpec.describe Airport, type: :model do
     end
 
     it 'returns the city, local_code (ident)' do
-      string = "#{@airport.city}, #{@airport.region.local_code} (#{@airport.ident})"
+      string = "#{@airport.city}, #{@airport.country.code} (#{@airport.ident})"
       expect(@airport.to_display).to eq string
+    end
+  end
+
+  describe '#to_municipality_display' do
+    before :each do
+      @us = create(:country, code: 'US')
+      @eu = create(:country, code: 'EU')
+
+      @us_region = create(:region, country: @us, local_code: 'TX')
+      @eu_region = create(:region, country: @eu, local_code: 'GB')
+    end
+
+    it 'displays the City, State if inside the US' do
+      airport = build(:airport, region: @us_region)
+      expect_str = "#{airport.city}, #{@us_region.local_code}"
+      expect(airport.to_municipality_display).to eq expect_str
+    end
+
+    it 'displays the City, Country if outside the US' do
+      airport = build(:airport, region: @eu_region)
+      expect_str = "#{airport.city}, #{@eu.code}"
+      expect(airport.to_municipality_display).to eq expect_str
     end
   end
 

@@ -7,7 +7,7 @@ RSpec.describe Api::V2::CountriesController, type: :controller do
     login_user
 
     before :each do
-      @countries = create_list(:country, 10)
+      @countries = [create(:country)]
     end
 
     it 'sets the appropriate @countries' do

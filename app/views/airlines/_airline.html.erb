@@ -1,0 +1,21 @@
+<tr class="text-uppercase">
+  <td scope="col">
+    <%= link_to airline.icao, airline_path(airline) %>
+  </td>
+
+  <td scope="col">
+    <%= airline.iata %>
+  </td>
+
+  <td scope="col">
+    <%= airline.name %>
+  </td>
+
+  <td scope="col">
+    <%= airline.flights.count %>
+  </td>
+
+  <td scope="col">
+    <%= airline.flights.select('DISTINCT(destination_id)').count %>
+  </td>
+</tr>

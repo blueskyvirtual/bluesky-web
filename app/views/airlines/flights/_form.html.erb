@@ -1,0 +1,194 @@
+<div class="container">
+  <%= form_for @flight, html:{ id: 'airline-flight-form' } do |f| %>
+
+    <table class="table table-sm table-bordered text-center small border-0">
+      <tr class="row m-0">
+        <td colspan="2" class="col-12 bg-primary text-white text-uppercase border-0">
+          Flight Information
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase pt-2">
+          Airline
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          <div class="form-row">
+            <div class="col-sm-6">
+              <%= f.collection_select :airline_id, Airline.all.order(:name), :id, :name, {}, class: 'form-control form-control-sm' %>
+              <% if @flight.errors[:airline].present? %>
+                <small class="form-text text-danger">
+                  Airline <%= @flight.errors[:airline].join(', ') %>
+                </small>
+              <% end %>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase pt-2">
+          Flight No.
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          <div class="form-row">
+            <div class="col-sm-2">
+              <%= f.text_field :flight, class: 'form-control form-control-sm', required: true %>
+              <% if @flight.errors[:flight].present? %>
+                <small class="form-text text-danger">
+                  Flight No. <%= @flight.errors[:flight].join(', ') %>
+                </small>
+              <% end %>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase pt-2">
+          Flight Type
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          <div class="form-row">
+            <div class="col-sm-6">
+              <%= f.collection_select :flight_type_id, Airline::Flight::Type.all.order(:name), :id, :name, {}, class: 'form-control form-control-sm' %>
+              <% if @flight.errors[:flight_type].present? %>
+                <small class="form-text text-danger">
+                  Flight type <%= @flight.errors[:flight_type].join(', ') %>
+                </small>
+              <% end %>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase pt-2">
+          Aircraft
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          <div class="form-row">
+            <div class="col-sm-6">
+              <%= f.collection_select :aircraft_type_id, Aircraft::Type.all.order(:name), :id, :name, {}, class: 'form-control form-control-sm' %>
+              <% if @flight.errors[:aircraft_type].present? %>
+                <small class="form-text text-danger">
+                  Aircraft type <%= @flight.errors[:aircraft_type].join(', ') %>
+                </small>
+              <% end %>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase pt-2">
+          Origin
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          <div class="form-row">
+            <div class="col-sm-12">
+              <div class="form-row">
+                <%= text_field_tag :origin_ident, nil, id: 'origin_ident', class: 'form-control form-control-sm col-sm-1 ml-1 text-uppercase', required: true %>
+                <%= text_field_tag :origin_name, nil, id: 'origin_name', class: 'form-control form-control-sm col-sm-6 ml-1', disabled: true %>
+                <%= f.hidden_field :origin_id, id: 'origin_id' %>
+              </div>
+
+              <% if @flight.errors[:origin].present? %>
+                <small class="form-text text-danger">
+                  Origin <%= @flight.errors[:origin].join(', ') %>
+                </small>
+              <% end %>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase pt-2">
+          Destination
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          <div class="form-row">
+            <div class="col-sm-12">
+              <div class="form-row">
+                <%= text_field_tag :destination_ident, nil, id: 'destination_ident', class: 'form-control form-control-sm col-sm-1 ml-1 text-uppercase', required: true %>
+                <%= text_field_tag :destination_name, nil, id: 'destination_name', class: 'form-control form-control-sm col-sm-6 ml-1', disabled: true %>
+                <%= f.hidden_field :destination_id, id: 'destination_id' %>
+              </div>
+              <% if @flight.errors[:destination].present? %>
+                <small class="form-text text-danger">
+                  Destination <%= @flight.errors[:destination].join(', ') %>
+                </small>
+              <% end %>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase pt-2">
+          Departure Time (UTC)
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          <div class="form-row form-group">
+            <div class="col-sm-6">
+              <%= f.time_select :dep_time, {default: {hour: 0, minute: 0}}, class: 'form-control form-control-sm', style: 'display: inline; width: 20%;' %>
+              <% if @flight.errors[:dep_time].present? %>
+                <small class="form-text text-danger">
+                  Departure time <%= @flight.errors[:dep_time].join(', ') %>
+                </small>
+              <% end %>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase pt-2">
+          Arrival Time (UTC)
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          <div class="form-row">
+            <div class="col-sm-6">
+              <%= f.time_select :arv_time, {default: {hour: 0, minute: 0}}, class: 'form-control form-control-sm', style: 'display: inline; width: 20%;' %>
+              <% if @flight.errors[:arv_time].present? %>
+                <small class="form-text text-danger">
+                  Arrival time <%= @flight.errors[:arv_time].join(', ') %>
+                </small>
+              <% end %>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td colspan="2" class="col-12 bg-primary text-white text-uppercase border-0">
+          &nbsp;
+        </td>
+      </tr>
+
+      <tr class="row m-0">
+        <td class="d-inline-block col-2 bg-primary text-white text-uppercase pt-1">
+          Confirm
+        </td>
+        <td class="d-inline-block col-10 text-left">
+          <div class="row">
+            <div class="col-sm-6">
+              <%= f.button type: 'submit', class: 'btn btn-sm btn-success' do %>
+                <%= fa_icon 'save' %> Save
+              <% end %>
+            </div>
+            <div class="col-sm-6 text-right">
+              <% if policy(@flight).destroy? && @flight.persisted? %>
+                <%= link_to airline_flight_path(@flight), method: :delete, class: 'btn btn-sm btn-danger', 'data-confirm': 'Are you sure you want to delete this flight?' do %>
+                  <%= fa_icon 'trash' %> Delete
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+  <% end %>
+</div>

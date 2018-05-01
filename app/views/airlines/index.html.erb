@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <h3>Airlines</h3>
+    </div>
+    <div class="ml-auto text-right">
+      <% if policy(Airline).create? -%>
+        <%= link_to new_airline_path, class: 'btn btn-sm btn-success' do %>
+          <%= fa_icon 'plus' %> New
+        <% end %>
+      <% end -%>
+    </div>
+  </div>
+
+  <div class="row">
+    <table class="table table-sm table-bordered text-center small">
+      <thead>
+      <tr class="bg-primary text-white text-uppercase">
+        <th scope="col"><%= link_to 'ICAO', sort_url(@q, :icao), class: 'text-white' %></th>
+        <th scope="col"><%= link_to 'IATA', sort_url(@q, :iata), class: 'text-white' %></th>
+        <th scope="col"><%= link_to 'Name', sort_url(@q, :name), class: 'text-white' %></th>
+        <th scope="col">Flights</th>
+        <th scope="col">Destinations</th>
+      </tr>
+      </thead>
+      <tbody>
+        <% if @airlines.empty? %>
+          <tr>
+            <td colspan="10">No airlines found</td>
+          </tr>
+        <% else %>
+          <%= render partial: 'airline', collection: @airlines %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row">
+    <div class="mx-auto">
+      <%= paginate @airlines, theme: 'twitter-bootstrap-4', pagination_class: 'pagination-sm' %>
+    </div>
+  </div>
+</div>

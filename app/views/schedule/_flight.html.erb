@@ -1,0 +1,41 @@
+<tr class="text-uppercase">
+  <td scope="col" title="<%= flight.airline.name %>">
+    <%= flight.airline.icao %>
+  </td>
+
+  <td scope="col">
+    <%= link_to flight.flight, airline_flight_path(flight.airline, flight) %>
+  </td>
+
+  <td scope="col" title="<%= flight.origin.name %>">
+    <%= flight.origin.to_display %>
+  </td>
+
+  <td scope="col" title="<%= flight.destination.name %>">
+    <%= flight.destination.to_display %>
+  </td>
+
+  <td scope="col">
+    <%= time_display(find_time(flight.origin, flight.dep_time)) %>
+  </td>
+
+  <td scope="col">
+    <%= time_display(find_time(flight.destination, flight.arv_time)) %>
+  </td>
+
+  <td scope="col" title="<%= flight.aircraft_type.name %>">
+    <%= flight.aircraft_type.icao %>
+  </td>
+
+  <td scope="col" class="d-none d-sm-table-cell">
+    <%= flight.duration %>
+  </td>
+
+  <td scope="col" class="d-none d-sm-table-cell">
+    <%= number_with_delimiter(flight.distance) %> nm
+  </td>
+
+  <td scope="col">
+    <%= link_to 'Dispatch', '#' %>
+  </td>
+</tr>

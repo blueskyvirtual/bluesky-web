@@ -10,8 +10,7 @@ RSpec.describe Aircraft::Type, type: :model do
   let(:type) { build(:aircraft_type) }
 
   describe 'ActiveRecord associations' do
-    it { expect(type).to have_many(:airlines).through(:fleets) }
-    it { expect(type).to have_many(:fleets) }
+    it { expect(type).to have_many(:airline_flights) }
     it { expect(type).to have_many(:user_flights) }
   end
 

@@ -47,15 +47,37 @@ class Airport < ApplicationRecord
   # ActiveRecord Delegations
   delegate :country, to: :region
 
+  # Geocoding
+  reverse_geocoded_by :latitude, :longitude
+
   # Displays the municipality (city) (or airport name if missing)
   def city
     return municipality if municipality.present?
     name
   end
 
-  # Displays the city (local_code)
+  def latitude
+    location.lat
+  end
+
+  def longitude
+    location.lon
+  end
+
+  # Displays the city, state (ident)
   def to_display
-    "#{city}, #{region.local_code} (#{ident})"
+    # "#{city}, #{region.local_code} (#{ident})"
+    "#{to_municipality_display} (#{ident})"
+  end
+
+  # Displays the City, State
+  #
+  def to_municipality_display
+    if country.code == 'US'
+      "#{city}, #{region.local_code}"
+    else
+      "#{city}, #{country.code}"
+    end
   end
 
   def to_s

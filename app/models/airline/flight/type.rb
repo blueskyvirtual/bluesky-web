@@ -7,8 +7,9 @@ class Airline::Flight::Type < ApplicationRecord
   # ActiveRecord associations
   has_many :flights,
            class_name: 'Airline::Flight',
-           inverse_of: :type,
-           dependent:  :destroy
+           foreign_key: :flight_type_id,
+           inverse_of:  :flight_type,
+           dependent:   :destroy
 
   # ActiveRecord validations
   validates :name,

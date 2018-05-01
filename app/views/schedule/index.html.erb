@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <h3>Flight Schedule</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= render partial: 'search_form' %>
+  </div>
+
+  <div class="row mt-0 mb-0 pb-0">
+    <div class="col-12 small text-right">
+      <%= number_with_delimiter(@result_count) %>
+      <%= 'flight'.pluralize(@result_count) %>
+    </div>
+  </div>
+
+  <div class="row">
+    <table class="table table-sm table-bordered text-center small">
+      <thead>
+      <tr class="bg-primary text-white text-uppercase">
+        <th scope="col">
+          <%= link_to 'Airline', sort_url(@q, :airline_icao), class: 'text-white' %>
+        </th>
+        <th scope="col">
+          <%= link_to 'Flight', sort_url(@q, :flight), class: 'text-white' %>
+        </th>
+        <th scope="col">
+          <%= link_to 'Origin', sort_url(@q, :origin_ident), class: 'text-white' %>
+        </th>
+        <th scope="col">
+          <%= link_to 'Destination', sort_url(@q, :destination_ident), class: 'text-white' %>
+        </th>
+        <th scope="col">
+          <%= link_to 'Departs', sort_url(@q, :dep_time), class: 'text-white' %>
+        </th>
+        <th scope="col">
+          <%= link_to 'Arrives', sort_url(@q, :arv_time), class: 'text-white' %>
+        </th>
+        <th scope="col">
+          <%= link_to 'Equip', sort_url(@q, :aircraft_type_icao), class: 'text-white' %>
+        </th>
+        <th scope="col" class="d-none d-sm-table-cell">
+          <%= link_to 'Duration', sort_url(@q, :duration), class: 'text-white' %>
+        </th>
+        <th scope="col" class="d-none d-sm-table-cell">
+          <%= link_to 'Distance', sort_url(@q, :distance), class: 'text-white' %>
+        </th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+        <% if @flights.empty? %>
+          <tr>
+            <td colspan="10">No flights found</td>
+          </tr>
+        <% else %>
+          <%= render partial: 'flight', collection: @flights %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row">
+    <div class="mx-auto">
+      <%= paginate @flights, theme: 'twitter-bootstrap-4', pagination_class: 'pagination-sm' %>
+    </div>
+  </div>
+</div>
