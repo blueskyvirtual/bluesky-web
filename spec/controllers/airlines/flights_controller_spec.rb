@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe Airlines::FlightsController, type: :controller do
-
   describe 'POST #create' do
     before :each do
       @attributes = build(:airline_flight)
@@ -145,7 +144,6 @@ RSpec.describe Airlines::FlightsController, type: :controller do
   end
 
   describe 'GET #not_found' do
-
     it 'recovers from flights not found' do
       expect do
         get :show, params: { airline_id: 'NONE', id: 'NONE' }
@@ -156,7 +154,6 @@ RSpec.describe Airlines::FlightsController, type: :controller do
       get :show, params: { airline_id: 'NONE', id: 'NONE' }
       expect(response).to render_template :not_found
     end
-
   end
 
   describe 'GET #map' do
@@ -166,16 +163,16 @@ RSpec.describe Airlines::FlightsController, type: :controller do
 
     it 'sets @flight' do
       get :map, xhr: true, format: :js, params: {
-          airline_id: @flight.airline,
-          flight_id:  @flight
+        airline_id: @flight.airline,
+        flight_id:  @flight
       }
       expect(assigns(:flight)).to eq @flight
     end
 
     it 'renders the route_map javascript partial' do
       get :map, xhr: true, format: :js, params: {
-          airline_id: @flight.airline,
-          flight_id: @flight
+        airline_id: @flight.airline,
+        flight_id: @flight
       }
       expect(response).to render_template '_map'
     end
@@ -215,9 +212,9 @@ RSpec.describe Airlines::FlightsController, type: :controller do
     context 'by unauthenticated user' do
       it 'redirects to the login page' do
         put :update, params: {
-            airline_id:     @flight.airline,
-            id:             @flight,
-            airline_flight: { arv_time: '00:00' }
+          airline_id:     @flight.airline,
+          id:             @flight,
+          airline_flight: { arv_time: '00:00' }
         }
         expect(response).to redirect_to new_user_session_path
       end
@@ -229,9 +226,9 @@ RSpec.describe Airlines::FlightsController, type: :controller do
       context 'with valid attributes' do
         it 'assigns the appropriate @flight' do
           put :update, params: {
-              airline_id:     @flight.airline,
-              id:             @flight,
-              airline_flight: attributes_for(:airline_flight)
+            airline_id:     @flight.airline,
+            id:             @flight,
+            airline_flight: attributes_for(:airline_flight)
           }
           expect(assigns(:flight)).to eq @flight
         end
@@ -241,9 +238,9 @@ RSpec.describe Airlines::FlightsController, type: :controller do
           attributes['flight'] = 9999
 
           put :update, params: {
-              airline_id:     @flight.airline,
-              id:             @flight,
-              airline_flight: attributes
+            airline_id:     @flight.airline,
+            id:             @flight,
+            airline_flight: attributes
           }
           @flight.reload
           expect(@flight.flight).to eq 9999
@@ -251,9 +248,9 @@ RSpec.describe Airlines::FlightsController, type: :controller do
 
         it 'redirects to the updated @flight' do
           put :update, params: {
-              airline_id:     @flight.airline,
-              id:             @flight,
-              airline_flight: attributes_for(:airline_flight)
+            airline_id:     @flight.airline,
+            id:             @flight,
+            airline_flight: attributes_for(:airline_flight)
           }
           @flight.reload
           expect(response).to redirect_to airline_flight_path(@flight.airline, @flight)
@@ -263,18 +260,18 @@ RSpec.describe Airlines::FlightsController, type: :controller do
       context 'with invalid attributes' do
         it 'assigns the appropriate @flight' do
           put :update, params: {
-              airline_id:     @flight.airline,
-              id:             @flight,
-              airline_flight: attributes_for(:airline_flight, :invalid)
+            airline_id:     @flight.airline,
+            id:             @flight,
+            airline_flight: attributes_for(:airline_flight, :invalid)
           }
           expect(assigns(:flight)).to eq @flight
         end
 
         it 'does not change the @flight attributes' do
           put :update, params: {
-              airline_id:     @flight.airline,
-              id:             @flight,
-              airline_flight: attributes_for(:airline_flight, :invalid)
+            airline_id:     @flight.airline,
+            id:             @flight,
+            airline_flight: attributes_for(:airline_flight, :invalid)
           }
           @flight.reload
           expect(@flight.origin).to_not eq nil
@@ -282,9 +279,9 @@ RSpec.describe Airlines::FlightsController, type: :controller do
 
         it 're-renders the edit page' do
           put :update, params: {
-              airline_id:     @flight.airline,
-              id:             @flight,
-              airline_flight: attributes_for(:airline_flight, :invalid)
+            airline_id:     @flight.airline,
+            id:             @flight,
+            airline_flight: attributes_for(:airline_flight, :invalid)
           }
           expect(response).to render_template :edit
         end

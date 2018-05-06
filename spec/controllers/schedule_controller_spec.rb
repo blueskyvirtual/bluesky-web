@@ -3,9 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe ScheduleController, type: :controller do
-
   describe 'GET #index' do
-
     before :each do
       type = Airline::Flight::Type.find_by(name: 'Scheduled')
       @flights = create_list(:airline_flight, 5, flight_type: type)
@@ -33,7 +31,6 @@ RSpec.describe ScheduleController, type: :controller do
   end
 
   describe 'GET|POST #search' do
-
     it 'responds to GET requests' do
       get :search
       expect(response).to render_template :index
@@ -43,7 +40,5 @@ RSpec.describe ScheduleController, type: :controller do
       post :search, params: { q: nil }
       expect(response).to render_template :index
     end
-
   end
-
 end

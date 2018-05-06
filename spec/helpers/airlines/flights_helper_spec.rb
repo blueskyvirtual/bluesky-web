@@ -13,7 +13,6 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe Airlines::FlightsHelper, type: :helper do
-
   describe '#airport_code' do
     it 'returns the IATA code for an airport if it exists' do
       airport = create(:airport, iata: 'TST')
@@ -41,5 +40,4 @@ RSpec.describe Airlines::FlightsHelper, type: :helper do
       expect(helper.flight_duration(flight)).to eq '4 hours and 31 minutes'
     end
   end
-
 end

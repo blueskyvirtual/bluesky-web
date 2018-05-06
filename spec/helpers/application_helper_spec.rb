@@ -38,14 +38,14 @@ RSpec.describe ApplicationHelper, type: :helper do
   describe '#find_time' do
     it 'returns time in the timezone of the geo object' do
       a = Airport.create(
-          ident:    'KIAH',
-          iata:     'IAH',
-          name:     'Houston',
-          region:   create(:region),
-          location: 'POINT (-95.34140014648438 29.984399795532227 97.0)'
+        ident:    'KIAH',
+        iata:     'IAH',
+        name:     'Houston',
+        region:   create(:region),
+        location: 'POINT (-95.34140014648438 29.984399795532227 97.0)'
       )
 
-      time = Time.now
+      time = Time.now.utc
 
       Time.use_zone('America/Chicago') do
         expect(helper.find_time(a, time)).to eq time
@@ -56,11 +56,11 @@ RSpec.describe ApplicationHelper, type: :helper do
   describe '#find_timezone' do
     it 'returns the timezone for a geo object' do
       a = Airport.create(
-          ident:    'KIAH',
-          iata:     'IAH',
-          name:     'Houston',
-          region:   create(:region),
-          location: 'POINT (-95.34140014648438 29.984399795532227 97.0)'
+        ident:    'KIAH',
+        iata:     'IAH',
+        name:     'Houston',
+        region:   create(:region),
+        location: 'POINT (-95.34140014648438 29.984399795532227 97.0)'
       )
 
       expect(helper.find_timezone(a)).to eq 'America/Chicago'
@@ -69,7 +69,7 @@ RSpec.describe ApplicationHelper, type: :helper do
 
   describe '#time_display' do
     before :each do
-      @regexp = %r{^\d{2}:\d{2} \w+$}
+      @regexp = /^\d{2}:\d{2} \w+$/
     end
 
     it 'returns a formatted time from a record and column' do

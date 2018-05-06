@@ -13,7 +13,6 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe ScheduleHelper, type: :helper do
-
   describe '#aircraft_options' do
     it 'creates an array of aircraft names and types for select options' do
       flight = create(:airline_flight)
@@ -49,9 +48,8 @@ RSpec.describe ScheduleHelper, type: :helper do
   describe '#flight_type_options' do
     it 'creates an array of flight types' do
       create(:airline_flight_type)
-      arry = Airline::Flight::Type.all.order(:name).collect {|t| [t.name, t.name] }
+      arry = Airline::Flight::Type.all.order(:name).collect { |t| [t.name, t.name] }
       expect(helper.flight_type_options).to eq arry
     end
   end
-
 end

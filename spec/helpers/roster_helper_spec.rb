@@ -27,7 +27,7 @@ RSpec.describe RosterHelper, type: :helper do
     end
 
     it 'returns options_for_select containing countries with the users selected' do
-      region  = create(:region, name: 'Test')
+      region = create(:region, name: 'Test')
       @user.region = region
       @user.save
 
