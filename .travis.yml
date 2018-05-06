@@ -1,0 +1,59 @@
+language: ruby
+cache: bundler
+sudo: false
+
+notifications:
+  email: false
+
+cache:
+  bundler: true
+
+addons:
+  postgresql: "9.6"
+  apt:
+    packages:
+      - postgresql-9.6-postgis-2.3
+
+bundler_args: --jobs 3 --retry 3
+
+before_script:
+  - psql -U postgres -c "create extension postgis"
+  - psql -c "CREATE DATABASE bluesky_test;" -U postgres
+  - cp config/database.yml.travis config/database.yml
+  - bundle exec rake db:schema:load db:seed
+
+env:
+  global:
+    - "RAILS_ENV=test"
+
+rvm:
+  - 2.5.0
+
+matrix:
+  fast_finish: true
+
+jobs:
+  fast_finish: true
+  include:
+    - stage: Static Analysis
+      rvm: 2.5.0
+      env:
+        - "RUBOCOP=true"
+      before_script: /bin/true
+      script:
+        - bundle exec rubocop
+
+    - stage: Static Analysis
+      rvm: 2.5.0
+      env:
+        - "COVERAGE=true"
+      script:
+        - bundle exec rake spec
+
+#    - stage: Static Analysis
+#      rvm: 2.5.0
+#      env:
+#        - "BRAKEMAN=true"
+#      before_script: /bin/true
+#      script:
+#        - bundle exec brakeman -A

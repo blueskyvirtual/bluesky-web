@@ -3,7 +3,7 @@
 require 'simplecov'
 
 if ENV['COVERAGE']
-  SimpleCov.minimum_coverage 90
+  SimpleCov.minimum_coverage 85
 
   SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
     [SimpleCov::Formatter::HTMLFormatter]
